@@ -21,3 +21,65 @@
   .nav a:nth-child(6)::before{content:"Why NOAH";font-size:13px;font-weight:650;letter-spacing:0}
   .header-actions>a:first-child{display:none}
 }
+
+/* Final homepage vertical rhythm — tightened after full-page review */
+.solutions-inner{padding:82px 0 72px!important}
+.solutions-head{margin-bottom:44px!important}
+.solutions-foot{margin-top:20px!important;padding-top:18px!important}
+.growth-inner{padding:82px 0 74px!important}
+.growth-head{margin-bottom:44px!important}
+.audiences-inner{padding:82px 0 76px!important}
+.audience-head{margin-bottom:42px!important}
+.audience-world{min-height:700px!important}
+.brand-digital,.partner-digital{bottom:28px!important}
+.audience-footer-line{margin-top:20px!important}
+.network-inner{padding:82px 0 78px!important}
+.network-head{margin-bottom:44px!important}
+.partner-network{min-height:555px!important;padding:36px!important}
+.network-map{height:338px!important;margin-top:24px!important}
+.properties{gap:18px!important}
+.property{padding:26px!important}
+.intelligence-inner{padding:84px 0 80px!important}
+.intelligence-head{margin-bottom:42px!important}
+.command-body{min-height:390px!important}
+.chart{height:198px!important}
+.why-inner{padding:80px 0 74px!important}
+.why-layout{gap:70px!important}
+.why-sticky .section-copy{margin-top:18px!important}
+.why-row{padding:22px 0!important}
+.trust-strip{margin-top:24px!important}
+.final-inner{padding:88px 0 84px!important}
+.final-inner p{margin-top:20px!important}
+.final-actions{margin-top:26px!important}
+.footer-inner{padding:44px 0 22px!important}
+.footer-grid{gap:42px!important;padding-bottom:34px!important}
+.footer-brand p{margin-top:14px!important}
+
+@media(max-width:1120px){
+  .solutions-inner,.growth-inner,.audiences-inner,.network-inner,.intelligence-inner,.why-inner{padding:74px 0 68px!important}
+  .solutions-head,.growth-head,.audience-head,.network-head,.intelligence-head{margin-bottom:38px!important}
+  .audience-world{min-height:670px!important}
+  .partner-network{min-height:510px!important}
+  .why-layout{gap:44px!important}
+  .final-inner{padding:80px 0 76px!important}
+}
+
+@media(max-width:720px){
+  .solutions-inner,.growth-inner,.audiences-inner,.network-inner,.intelligence-inner,.why-inner{padding:62px 0 58px!important}
+  .solutions-head,.growth-head,.audience-head,.network-head,.intelligence-head{margin-bottom:30px!important}
+  .solutions-foot{margin-top:14px!important;padding-top:14px!important}
+  .audience-world{min-height:640px!important}
+  .brand-digital,.partner-digital{bottom:16px!important}
+  .partner-network{min-height:470px!important;padding:26px 20px!important}
+  .network-map{height:290px!important;margin-top:18px!important}
+  .property{padding:20px!important}
+  .command-body{min-height:0!important}
+  .chart{height:180px!important}
+  .why-row{padding:18px 0!important}
+  .trust-strip{margin-top:18px!important}
+  .final-inner{padding:70px 0 68px!important}
+  .final-inner p{margin-top:17px!important}
+  .final-actions{margin-top:22px!important}
+  .footer-inner{padding:36px 0 18px!important}
+  .footer-grid{gap:28px!important;padding-bottom:26px!important}
+}
