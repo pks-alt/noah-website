@@ -1,1 +1,1 @@
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.brand-logo,.footer-logo').forEach(img=>{img.src='assets/noah-logo.png';img.style.display='block';img.style.visibility='visible';img.style.opacity='1';});const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
