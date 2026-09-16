@@ -1,0 +1,27 @@
+/* Growth connected */
+.growth{position:relative;background:#fff;overflow:hidden}
+.growth-inner{padding:108px 0 104px}
+.growth-head{max-width:930px;margin-bottom:72px}.growth-head .section-copy{max-width:740px;margin-top:24px}
+.growth-flow{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(7,16,26,.13)}
+.growth-flow:before{content:"";position:absolute;left:7%;right:7%;top:53px;height:1px;background:linear-gradient(90deg,rgba(18,123,255,.7),rgba(24,210,207,.76))}
+.growth-step{position:relative;padding:30px 34px 0 0;min-height:295px}.growth-step:not(:last-child){margin-right:34px}
+.step-node{position:relative;z-index:2;width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid rgba(18,123,255,.28);box-shadow:0 0 0 8px #fff,0 8px 22px rgba(17,70,116,.08);display:grid;place-items:center;color:#0c73df;font-size:10px;font-weight:900}
+.growth-step h3{margin:34px 0 12px;color:#0b1620;font-size:27px;letter-spacing:-.04em}.growth-step p{margin:0;color:#6b7782;font-size:14px;line-height:1.62}
+.growth-step .micro{display:block;margin-top:20px;color:#1d73cf;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.growth-cycle{margin-top:42px;padding:24px 28px;border-radius:18px;background:linear-gradient(105deg,#07111c,#0b1b2a);color:#dbe7f1;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;box-shadow:0 22px 58px rgba(6,16,26,.14)}
+.cycle-mark{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(85,204,224,.24);background:radial-gradient(circle,rgba(21,172,210,.13),transparent 70%);color:#3ed3d4;font-size:21px}.growth-cycle strong{display:block;font-size:17px;letter-spacing:-.025em}.growth-cycle small{display:block;margin-top:5px;color:#8498aa;font-size:12px;line-height:1.45}.cycle-path{color:#4cd2d5;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+/* Brands + Partners */
+.audiences{background:#f3f6f8;border-top:1px solid var(--softline);border-bottom:1px solid var(--softline)}
+.audiences-inner{padding:104px 0}
+.audience-head{display:flex;justify-content:space-between;gap:64px;align-items:end;margin-bottom:54px}.audience-head .section-copy{max-width:550px}
+.audience-stage{display:grid;grid-template-columns:1fr 1fr;min-height:590px;border-radius:26px;overflow:hidden;box-shadow:0 28px 72px rgba(18,43,64,.13);border:1px solid rgba(7,16,26,.08)}
+.audience-panel{position:relative;padding:58px 56px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.audience-panel.brand-side{background:linear-gradient(135deg,#06111c,#0a2031);color:#fff}.audience-panel.partner-side{background:linear-gradient(145deg,#ffffff,#f1f6f8);color:#07101a}
+.audience-panel:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-150px;bottom:-180px;background:radial-gradient(circle,rgba(22,154,255,.22),transparent 68%)}.partner-side:after{background:radial-gradient(circle,rgba(24,210,207,.17),transparent 68%)}
+.audience-tag{position:relative;z-index:2;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#56cfd5}.partner-side .audience-tag{color:#1672ce}
+.audience-panel h3{position:relative;z-index:2;max-width:520px;margin:22px 0 22px;font-size:clamp(32px,3vw,49px);line-height:1.02;letter-spacing:-.052em}.brand-side h3{color:#f5fbff}
+.audience-panel p{position:relative;z-index:2;max-width:520px;margin:0;color:#92a4b5;font-size:15px;line-height:1.65}.partner-side p{color:#65717d}
+.audience-points{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}.audience-points span{padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);font-size:10px;font-weight:800;letter-spacing:.055em}.partner-side .audience-points span{border-color:rgba(7,16,26,.09);background:#fff;color:#52606d}
+.audience-link{position:relative;z-index:2;display:inline-flex;align-items:center;gap:9px;margin-top:44px;font-size:13px;font-weight:850;color:#fff}.partner-side .audience-link{color:#0c70d7}
+.audience-visual{position:absolute;right:38px;bottom:38px;width:175px;height:175px;opacity:.32;border:1px solid rgba(255,255,255,.16);border-radius:50%}.partner-side .audience-visual{border-color:rgba(18,123,255,.15)}
+.audience-visual:before,.audience-visual:after{content:"";position:absolute;border-radius:50%;border:1px solid currentColor;opacity:.4}.audience-visual:before{inset:22%}.audience-visual:after{inset:42%}.brand-side .audience-visual{color:#27c6df}.partner-side .audience-visual{color:#127bff}
