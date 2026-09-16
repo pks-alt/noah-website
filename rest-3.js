@@ -2,6 +2,12 @@
   const loadScript=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=()=>reject(new Error('Unable to load '+src));document.head.appendChild(s);});
   await loadScript('rest-3-base.js');
 
+  /* Load the stability pass after every existing stylesheet, including polish.css. */
+  const layoutFixes=document.createElement('link');
+  layoutFixes.rel='stylesheet';
+  layoutFixes.href='layout-fixes.css';
+  document.head.appendChild(layoutFixes);
+
   const propertyStyle=document.createElement('style');
   propertyStyle.textContent=`
     .property .browser-card{aspect-ratio:4/3!important;position:relative!important;overflow:hidden!important;padding:0!important;border-radius:18px!important;background:linear-gradient(145deg,#eef4f7,#f8fbfc)!important;border:1px solid rgba(7,16,26,.08)!important;box-shadow:0 18px 46px rgba(15,48,70,.10)!important}
