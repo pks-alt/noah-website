@@ -42,3 +42,67 @@ if(noahMenu){
   noahMenu.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleNoahMenu();}});
   noahNav.forEach(link=>link.addEventListener('click',()=>{document.body.classList.remove('noah-menu-open');noahMenu.setAttribute('aria-expanded','false');noahMenu.textContent='☰';}));
 }
+
+/* Finalized customer-first homepage messaging. Design stays unchanged. */
+const setHTML=(selector,html)=>{const el=document.querySelector(selector);if(el)el.innerHTML=html};
+const setText=(selector,text)=>{const el=document.querySelector(selector);if(el)el.textContent=text};
+const setTexts=(selector,texts)=>{document.querySelectorAll(selector).forEach((el,i)=>{if(texts[i]!==undefined)el.textContent=texts[i]})};
+
+setText('.hero .lede','NOAH helps brands acquire customers, expand distribution, and turn demand into measurable growth by connecting media, partnerships, commerce, and performance intelligence in one global ecosystem.');
+
+setText('.solutions .section-copy','Growth rarely happens through one channel. NOAH brings together performance media, partner distribution, owned commerce, and intelligence so you can reach more customers, create more paths to conversion, and optimize growth as performance changes.');
+setTexts('.solutions .capability-row p',[
+  'Acquire customers through performance-led media across channels and markets.',
+  'Expand distribution through publishers, creators, affiliates, and strategic partners.',
+  'Reach high-intent consumers through NOAH-owned commerce destinations and activation opportunities.',
+  'Connect media, partner, commerce, and revenue signals to understand what is driving growth.'
+]);
+
+setHTML('.growth-v2 .section-title','Turn Demand Into<br>Measurable Growth.');
+setText('.growth-v2 .section-copy','Most growth programs are managed in separate channels. NOAH connects the journey from customer acquisition to distribution, commerce, and optimization—so each part of the system can make the next one stronger.');
+setTexts('.growth-v2-step p',[
+  'Create demand and acquire customers through performance-led media.',
+  'Expand reach through publishers, creators, affiliates, and strategic distribution partners.',
+  'Move high-intent audiences toward commerce opportunities and conversion.',
+  'Use performance signals to understand what is working, improve efficiency, and guide the next activation.'
+]);
+setText('.growth-v2-cycle strong','One continuous growth cycle.');
+setText('.growth-v2-cycle small','Each stage feeds the next so the system keeps learning and improving.');
+setHTML('.growth-v2-cycle-path','<span>ACQUIRE</span><i></i><span>ACTIVATE</span><i></i><span>CONVERT</span><i></i><span>LEARN</span><i></i><span>IMPROVE</span>');
+
+setText('.audiences .section-copy','NOAH connects brands looking for measurable growth with partners that can extend reach, influence buying decisions, and create new paths to commerce.');
+setHTML('.brand-world h3','Acquire More Customers.<br>Expand Your Paths to Revenue.');
+setText('.brand-world p','Bring media, partner distribution, owned commerce, and performance intelligence together around your growth goals.');
+setHTML('.partner-world h3','Turn Your Audience Into<br>Commercial Opportunity.');
+setText('.partner-world p','Connect your audience, content, and influence with relevant brands, campaigns, and commerce opportunities across the NOAH ecosystem.');
+
+setText('.network .section-title','More Ways to Reach Customers Ready to Act.');
+setText('.network .section-copy','NOAH combines partner-driven distribution with owned commerce destinations, giving brands more ways to reach high-intent consumers and giving partners more opportunities to participate in performance-led growth.');
+setText('.partner-network h3','Extend Your Reach Through Performance Partnerships.');
+setText('.partner-network p','Activate publishers, creators, affiliates, and content partners around campaigns and commerce opportunities designed to drive measurable outcomes.');
+const propertyCopy=[...document.querySelectorAll('.property-copy')];
+if(propertyCopy[0]){const p=propertyCopy[0].querySelector('p');if(p)p.textContent='Commerce discovery built around consumer intent, connecting shoppers with relevant offers and opportunities.';}
+if(propertyCopy[1]){const p=propertyCopy[1].querySelector('p');if(p)p.textContent='A NOAH-owned commerce experience designed around timely discovery and high-intent shopping opportunities.';}
+
+setHTML('.intelligence .section-title','See What Is Driving Growth.<br>Know What to Do Next.');
+setText('.intelligence .section-copy','NOAH Intelligence brings together performance signals across media, partnerships, commerce, and revenue so teams can understand what is working, identify where growth is coming from, and make better optimization decisions.');
+setTexts('.intelligence .insight b',[
+  'Bring the signals that matter into one connected performance view.',
+  'See relationships across spend, conversions, partners, commerce, and revenue.',
+  'Use what the system learns to decide what to scale, adjust, or activate next.'
+]);
+
+setHTML('.why .section-title','Growth Works Better When<br>the Pieces Work Together.');
+setText('.why .section-copy','Most growth ecosystems are fragmented across agencies, channels, partners, commerce platforms, and analytics. NOAH is designed to bring those pieces together around one objective: measurable growth.');
+setTexts('.why-row p',[
+  'Media, partnerships, commerce, and intelligence working as one ecosystem.',
+  'Programs structured around measurable commercial outcomes.',
+  'NOAH-owned commerce destinations complement paid media and partner reach.',
+  'A flexible model for activating growth opportunities across channels and markets.',
+  'Performance signals help determine what to scale, adjust, and activate next.'
+]);
+const whyRows=[...document.querySelectorAll('.why-row')];
+if(whyRows[4]){const h=whyRows[4].querySelector('h3');if(h)h.textContent='Continuous Optimization';}
+
+setText('.final-cta h2','Let’s Build Your Next Growth Engine.');
+setText('.final-cta p','Whether your priority is acquiring more customers, expanding distribution, activating new partners, growing commerce, or understanding performance more clearly, NOAH can help connect the pieces around your growth goals.');
