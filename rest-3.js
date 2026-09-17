@@ -2,6 +2,11 @@
   const loadScript=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=()=>reject(new Error('Unable to load '+src));document.head.appendChild(s);});
   await loadScript('rest-3-base.js');
 
+  /* The homepage now has a dedicated Solutions page. */
+  const homepageNav=[...document.querySelectorAll('.nav a')];
+  if(homepageNav[0])homepageNav[0].setAttribute('href','solutions.html');
+  document.querySelectorAll('.site-footer .footer-col:first-of-type a').forEach(a=>a.setAttribute('href','solutions.html'));
+
   /* Load the stability pass after every existing stylesheet, including polish.css. */
   const layoutFixes=document.createElement('link');
   layoutFixes.rel='stylesheet';
