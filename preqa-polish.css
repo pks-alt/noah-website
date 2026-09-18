@@ -82,3 +82,40 @@
   .home-page .intelligence-inner,
   .home-page .why-inner{padding-top:76px!important;padding-bottom:72px!important}
 }
+
+
+/* Responsive pre-QA stability: remove fixed-height presentation where content stacks. */
+@media(max-width:960px){
+  .network-page .side-card{min-height:auto!important}
+  .why-page .distribution-diagram{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:14px!important;
+    min-height:0!important;
+    padding:22px!important;
+  }
+  .why-page .distribution-diagram .dist-core{
+    position:relative!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    align-self:center!important;
+    width:118px!important;
+    height:118px!important;
+    flex:0 0 auto!important;
+  }
+  .why-page .distribution-diagram .dist-card{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    width:100%!important;
+  }
+}
+
+@media(max-width:720px){
+  .network-page .side-card{padding:30px 24px!important}
+  .why-page .distribution-diagram{padding:18px!important}
+}
