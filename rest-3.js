@@ -7,11 +7,6 @@
   if(homepageNav[0])homepageNav[0].setAttribute('href','solutions.html');
   document.querySelectorAll('.site-footer .footer-col:first-of-type a').forEach(a=>a.setAttribute('href','solutions.html'));
 
-  /* Load the stability pass after every existing stylesheet, including polish.css. */
-  const layoutFixes=document.createElement('link');
-  layoutFixes.rel='stylesheet';
-  layoutFixes.href='layout-fixes.css';
-  document.head.appendChild(layoutFixes);
 
   const propertyStyle=document.createElement('style');
   propertyStyle.textContent=`
