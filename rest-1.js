@@ -3,9 +3,9 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
     <div class="solutions-head">
       <div>
         <div class="section-kicker">Solutions</div>
-        <h2 class="section-title">One Growth System.<br>Multiple Ways to Perform.</h2>
+        <h2 class="section-title">Four Capabilities.<br>One Connected Growth System.</h2>
       </div>
-      <p class="section-copy">NOAH brings performance media, partnerships, commerce, and intelligence together in one connected growth model—helping brands acquire customers, expand distribution, convert demand, and optimize what comes next.</p>
+      <p class="section-copy">Use each capability where it adds value—or connect them so acquisition, distribution, commerce, and learning can reinforce one another.</p>
     </div>
 
     <div class="solutions-experience">
@@ -72,7 +72,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
         </article>
         <article class="capability-row" data-target="partners" tabindex="0" role="listitem">
           <div class="capability-num">02</div>
-          <div><h3>Performance Partnerships</h3><p>Scale through publishers, creators, affiliates, and strategic distribution partners.</p></div>
+          <div><h3>Performance Partnerships</h3><p>Expand distribution through publishers, creators, affiliates, and strategic partners.</p></div>
           <span class="capability-arrow">↗</span>
         </article>
         <article class="capability-row" data-target="commerce" tabindex="0" role="listitem">
@@ -82,7 +82,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
         </article>
         <article class="capability-row" data-target="intelligence" tabindex="0" role="listitem">
           <div class="capability-num">04</div>
-          <div><h3>NOAH Intelligence</h3><p>Connect spend, revenue, conversions, attribution, and partner performance into a clearer view.</p></div>
+          <div><h3>NOAH Intelligence</h3><p>Connect performance signals so teams can learn what should happen next.</p></div>
           <span class="capability-arrow">↗</span>
         </article>
       </div>
@@ -90,7 +90,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
 
     <div class="solutions-foot">
       <div class="optimization-line"><span class="optimization-mark">↻</span><div><b>Continuous Optimization</b><small>Intelligence continuously informs what to scale, adjust, and activate next.</small></div></div>
-      <a class="text-link" href="#growth">Explore NOAH Solutions <span>→</span></a>
+      <a class="text-link" href="solutions.html">Explore NOAH Solutions <span>→</span></a>
     </div>
   </div>
 </section>
@@ -100,9 +100,9 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
     <div class="growth-v2-head">
       <div>
         <div class="section-kicker">How NOAH Works</div>
-        <h2 class="section-title">Growth Works Better<br>When Everything Connects.</h2>
+        <h2 class="section-title">Acquire. Expand. Convert.<br>Learn. Improve.</h2>
       </div>
-      <p class="section-copy">Media, partnerships, commerce, and performance data are often managed separately. NOAH connects them around one objective: turning demand into measurable growth.</p>
+      <p class="section-copy">The Connected Growth System follows one clear journey from demand creation to learning—so what happens at one stage can strengthen the next.</p>
     </div>
 
     <div class="growth-v2-layout">
@@ -114,7 +114,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
         </article>
         <article class="growth-v2-step" data-growth-stage="activate" tabindex="0" role="listitem">
           <span class="growth-v2-num">02</span>
-          <div class="growth-v2-step-copy"><span class="growth-v2-micro">DISTRIBUTION</span><h3>Activate</h3><p>Extend reach through publishers, creators, affiliates, and strategic partners.</p></div>
+          <div class="growth-v2-step-copy"><span class="growth-v2-micro">DISTRIBUTION</span><h3>Expand</h3><p>Extend reach through publishers, creators, affiliates, and strategic partners.</p></div>
           <span class="growth-v2-arrow">↗</span>
         </article>
         <article class="growth-v2-step" data-growth-stage="convert" tabindex="0" role="listitem">
@@ -124,7 +124,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
         </article>
         <article class="growth-v2-step" data-growth-stage="optimize" tabindex="0" role="listitem">
           <span class="growth-v2-num">04</span>
-          <div class="growth-v2-step-copy"><span class="growth-v2-micro">INTELLIGENCE</span><h3>Optimize</h3><p>Use performance intelligence to understand what is working and improve what happens next.</p></div>
+          <div class="growth-v2-step-copy"><span class="growth-v2-micro">INTELLIGENCE</span><h3>Learn</h3><p>Use performance intelligence to understand what is working and improve what happens next.</p></div>
           <span class="growth-v2-arrow">↗</span>
         </article>
       </div>
