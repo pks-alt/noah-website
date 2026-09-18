@@ -3,17 +3,17 @@ document.body.insertAdjacentHTML('beforeend',`<section class="audiences" id="aud
     <div class="audience-head">
       <div>
         <div class="section-kicker">Who We Work With</div>
-        <h2 class="section-title">Built for Both Sides<br>of Growth.</h2>
+        <h2 class="section-title">Built for Brands.<br>Open to Partners.</h2>
       </div>
-      <p class="section-copy">NOAH creates a connected environment where brands can activate more paths to growth and partners can turn audience, reach, and influence into commercial opportunity.</p>
+      <p class="section-copy">Brands use NOAH to create more paths to customer growth. Partners participate by bringing relevant audience, content, influence, commerce, and distribution capabilities into the ecosystem.</p>
     </div>
 
     <div class="audience-experience">
       <article class="audience-world brand-world">
         <div class="world-copy">
           <div class="audience-tag">For Brands</div>
-          <h3>Acquire More Customers.<br>Grow Revenue More Efficiently.</h3>
-          <p>Activate media, partner distribution, owned commerce, and performance intelligence through one coordinated growth model.</p>
+          <h3>More Paths to<br>Customer Growth.</h3>
+          <p>Use the Connected Growth System to acquire customers, extend distribution, create commerce pathways, and improve decisions.</p>
           <div class="audience-points"><span>Customer Acquisition</span><span>Revenue Growth</span><span>Market Expansion</span><span>Partner Activation</span><span>Performance Visibility</span></div>
           <a class="audience-link" href="#contact">Grow With NOAH <span>→</span></a>
         </div>
@@ -43,7 +43,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="audiences" id="aud
       <article class="audience-world partner-world">
         <div class="world-copy">
           <div class="audience-tag">For Partners</div>
-          <h3>Turn Audience and Influence<br>Into Opportunity.</h3>
+          <h3>Turn Reach and Influence<br>Into Opportunity.</h3>
           <p>Connect with brands, campaigns, commerce opportunities, and performance-led programs across the NOAH ecosystem.</p>
           <div class="audience-points"><span>Brand Opportunities</span><span>Campaign Access</span><span>Commerce Activation</span><span>Monetization</span><span>Long-Term Partnerships</span></div>
           <a class="audience-link" href="#contact">Partner With NOAH <span>→</span></a>
@@ -73,9 +73,9 @@ document.body.insertAdjacentHTML('beforeend',`<section class="audiences" id="aud
 </section>
 <section class="network" id="network">
   <div class="section-wrap network-inner reveal">
-    <div class="network-head"><div><div class="section-kicker">Our Network</div><h2 class="section-title">Distribution You Can Activate.</h2></div><p class="section-copy">NOAH combines partner-driven distribution with owned commerce destinations, creating more ways for brands to reach high-intent consumers and more opportunities for partners to participate in growth.</p></div>
+    <div class="network-head"><div><div class="section-kicker">Our Network</div><h2 class="section-title">Partner Reach. Owned Commerce.<br>One Distribution Layer.</h2></div><p class="section-copy">NOAH combines external partner reach with owned commerce destinations so brands can extend distribution beyond paid media and create additional paths toward shopping intent.</p></div>
     <div class="network-layout">
-      <article class="partner-network"><h3>Partner Network</h3><p>Activate publishers, creators, affiliates, content partners, and performance-based distribution around growth opportunities.</p><div class="network-map"><div class="network-ring"></div><div class="network-ring r2"></div><div class="network-hub">NOAH<br>NETWORK</div><span class="network-chip nc1">Publishers</span><span class="network-chip nc2">Creators</span><span class="network-chip nc3">Affiliates</span><span class="network-chip nc4">Content Partners</span><span class="network-chip nc5">Distribution</span></div></article>
+      <article class="partner-network"><h3>Performance Partner Network</h3><p>Extend distribution through publishers, creators, affiliates, content partners, and strategic relationships.</p><div class="network-map"><div class="network-ring"></div><div class="network-ring r2"></div><div class="network-hub">NOAH<br>NETWORK</div><span class="network-chip nc1">Publishers</span><span class="network-chip nc2">Creators</span><span class="network-chip nc3">Affiliates</span><span class="network-chip nc4">Content Partners</span><span class="network-chip nc5">Distribution</span></div></article>
       <div class="properties">
         <article class="property"><div class="property-copy"><small>NOAH-Owned Commerce</small><h3>DealsCanvas</h3><p>A NOAH-owned commerce destination designed to connect consumers with relevant offers and shopping opportunities.</p><a class="text-link" href="https://www.dealscanvas.com/" target="_blank" rel="noopener">Visit DealsCanvas <span>↗</span></a></div><a class="browser-card" href="https://www.dealscanvas.com/" target="_blank" rel="noopener" aria-label="Open DealsCanvas"><div class="browser-bar"><i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i><span style="margin-left:6px;font-size:7px;color:#83929d;letter-spacing:.08em">DEALSCANVAS.COM</span></div><img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.dealscanvas.com%2F?w=900&h=600" onerror="this.onerror=null;this.src='https://image.thum.io/get/width/900/crop/600/noanimate/https://www.dealscanvas.com/'" alt="DealsCanvas live homepage preview" loading="lazy" style="position:absolute;left:0;right:0;top:24px;width:100%;height:calc(100% - 24px);object-fit:cover;object-position:top;display:block;background:#eef3f7"></a></article>
         <article class="property"><div class="property-copy"><small>NOAH-Owned Commerce</small><h3>CatchTheDeal.ai</h3><p>A NOAH-owned commerce experience focused on helping consumers discover timely, high-intent opportunities.</p><a class="text-link" href="https://www.catchthedeal.ai/" target="_blank" rel="noopener">Visit CatchTheDeal.ai <span>↗</span></a></div><a class="browser-card" href="https://www.catchthedeal.ai/" target="_blank" rel="noopener" aria-label="Open CatchTheDeal.ai"><div class="browser-bar"><i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i><span style="margin-left:6px;font-size:7px;color:#83929d;letter-spacing:.08em">CATCHTHEDEAL.AI</span></div><img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fwww.catchthedeal.ai%2F?w=900&h=600" onerror="this.onerror=null;this.src='https://image.thum.io/get/width/900/crop/600/noanimate/https://www.catchthedeal.ai/'" alt="CatchTheDeal.ai live homepage preview" loading="lazy" style="position:absolute;left:0;right:0;top:24px;width:100%;height:calc(100% - 24px);object-fit:cover;object-position:top;display:block;background:#eef3f7"></a></article>
