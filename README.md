@@ -26,6 +26,13 @@ Production-ready static website for **NOAH Digital**.
 - `assets/property/dealscanvas-homepage.webp` — approved DealsCanvas visual
 - `assets/property/catchthedeal-homepage.avif` — approved CatchTheDeal.ai visual
 
+## Legal pages
+
+- `privacy.html` — Privacy Policy
+- `terms.html` — Terms of Use
+- `cookies.html` — Cookie Policy
+- `404.html` — Custom page-not-found experience
+
 ## SEO / launch files
 
 - `robots.txt`
@@ -58,5 +65,7 @@ Code-level final QA completed before developer handoff:
 - Skip-to-content accessibility link added
 - Domain/email standardized to `noahdigital.io`
 - Legacy prototype wording and old optimization/activation language removed
+- Legal pages are included and linked from every footer
+- LinkedIn company page is linked in every footer
 
 The developer should perform the final browser/device review and deployment verification on the production environment.
