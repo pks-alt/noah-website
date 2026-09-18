@@ -383,3 +383,8 @@
   .why-page .hero-inner{min-height:660px!important}
   .contact-page .hero-inner{min-height:630px!important}
 }
+
+.footer-bottom-links{display:flex;align-items:center;justify-content:flex-end;gap:18px;flex-wrap:wrap}
+.footer-bottom-links a{color:#718596!important;font-size:9px!important}
+.footer-bottom-links a:hover{color:#fff!important}
+@media(max-width:620px){.footer-bottom-links{justify-content:flex-start;gap:14px}}
