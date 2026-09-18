@@ -31,7 +31,7 @@ setTexts('.growth-v2-step p',[
   'Connect the signals behind performance and use them to inform the next move.'
 ]);
 setText('.growth-v2-cycle strong','One connected growth cycle.');
-setText('.growth-v2-cycle small','Learning feeds the next activation so the system can keep improving.');
+setText('.growth-v2-cycle small','Learning improves the next cycle and helps guide what the system does next.');
 setHTML('.growth-v2-cycle-path','<span>ACQUIRE</span><i></i><span>EXPAND</span><i></i><span>CONVERT</span><i></i><span>LEARN</span><i></i><span>IMPROVE</span>');
 
 setHTML('.audiences .section-title','Built for Brands.<br>Open to Partners.');
@@ -64,7 +64,7 @@ setHref('.intelligence .text-link','intelligence.html');
 setHTML('.why .section-title','Designed to Work<br>as One.');
 setText('.why .section-copy','NOAH is differentiated by the connections between capabilities—not simply the capabilities themselves.');
 const whyRows=[...document.querySelectorAll('.why-row')];
-const whyHeads=['Shared Commercial Objective','Connected Handoffs','Partner + Owned Distribution','Intelligence in the Loop','Flexible Activation'];
+const whyHeads=['Shared Commercial Objective','Connected Handoffs','Partner + Owned Distribution','Intelligence in the Loop','Flexible by Design'];
 const whyCopy=[
   'Acquisition, distribution, commerce, and learning align around the same growth objective.',
   'What one stage learns can strengthen what happens next.',
