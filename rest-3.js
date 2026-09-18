@@ -37,7 +37,7 @@
 
   const cards=[...document.querySelectorAll('.network .property .browser-card')];
   const specs=[
-    {mode:'base64',path:'assets/property/deals-final.txt',href:'https://www.dealscanvas.com/',alt:'DealsCanvas developed commerce showcase',label:'DealsCanvas · NOAH Commerce Property'},
+    {mode:'direct',src:'assets/property/dealscanvas-homepage.webp',href:'https://www.dealscanvas.com/',alt:'DealsCanvas developed commerce showcase',label:'DealsCanvas · NOAH Commerce Property'},
     {mode:'direct',src:'assets/property/catchthedeal-homepage.avif',href:'https://www.catchthedeal.ai/',alt:'CatchTheDeal.ai smart shopping and deals showcase',label:'CatchTheDeal.ai · NOAH Commerce Property'}
   ];
 
