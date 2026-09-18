@@ -119,3 +119,10 @@
   .network-page .side-card{padding:30px 24px!important}
   .why-page .distribution-diagram{padding:18px!important}
 }
+
+
+/* Contact visual transition: separate the dark hero from the first inquiry section. */
+.contact-page .brand-section{
+  background:linear-gradient(145deg,#07131f 0%,#091b29 52%,#0a2231 100%)!important;
+  border-top:1px solid rgba(126,184,222,.10);
+}
