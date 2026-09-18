@@ -22,8 +22,8 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
 
         <div class="system-core">
           <span>NOAH</span>
-          <strong>Growth<br>Engine</strong>
-          <small>Connected by intelligence</small>
+          <strong>Growth<br>System</strong>
+          <small>CONNECTED GROWTH SYSTEM</small>
         </div>
 
         <div class="system-module module-media" data-module="media">
@@ -124,7 +124,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
         </article>
         <article class="growth-v2-step" data-growth-stage="optimize" tabindex="0" role="listitem">
           <span class="growth-v2-num">04</span>
-          <div class="growth-v2-step-copy"><span class="growth-v2-micro">INTELLIGENCE</span><h3>Learn</h3><p>Use performance intelligence to understand what is working and improve what happens next.</p></div>
+          <div class="growth-v2-step-copy"><span class="growth-v2-micro">INTELLIGENCE</span><h3>Learn</h3><p>Use NOAH Intelligence to understand what is working and improve what happens next.</p></div>
           <span class="growth-v2-arrow">↗</span>
         </article>
       </div>
@@ -157,7 +157,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
             <div class="journey-card-head"><span>03</span><b>Commerce</b><small>HIGH-INTENT MOMENTS</small></div>
             <div class="journey-commerce">
               <div class="journey-product"><i></i></div>
-              <div class="journey-copy"><strong>DISCOVER</strong><i></i><i></i><button type="button" tabindex="-1">ACTIVATE</button></div>
+              <div class="journey-copy"><strong>DISCOVER</strong><i></i><i></i><button type="button" tabindex="-1">SHOP</button></div>
             </div>
             <div class="journey-tags"><span>DISCOVERY</span><span>OFFERS</span><span>CONVERSION</span></div>
           </div>
@@ -168,7 +168,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
             <div class="journey-chart"><i></i><i></i><i></i><i></i><i></i><i></i></div>
           </div>
 
-          <div class="journey-center"><span>NOAH</span><strong>Connected<br>Growth</strong><small>ONE CONTINUOUS SYSTEM</small></div>
+          <div class="journey-center"><span>NOAH</span><strong>Growth<br>System</strong><small>CONNECTED BY DESIGN</small></div>
         </div>
 
         <div class="growth-v2-status"><span class="growth-v2-status-dot"></span><b>Demand</b><i>→</i><b>Distribution</b><i>→</i><b>Commerce</b><i>→</i><b>Intelligence</b><i>→</i><strong>Better Decisions</strong></div>
@@ -177,7 +177,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="solutions" id="sol
 
     <div class="growth-v2-cycle">
       <div class="growth-v2-cycle-mark">↻</div>
-      <div><strong>A continuous growth cycle—not a one-time funnel.</strong><small>Performance signals flow back into the system so each activation can become smarter than the last.</small></div>
+      <div><strong>A continuous growth cycle—not a one-time funnel.</strong><small>Performance signals flow back into the system so each cycle can become better informed than the last.</small></div>
       <div class="growth-v2-cycle-path"><span>MEASURE</span><i></i><span>UNDERSTAND</span><i></i><span>OPTIMIZE</span></div>
     </div>
   </div>
