@@ -285,3 +285,85 @@
 @media(prefers-reduced-motion:reduce){
   .nav a::after,.mobile-nav{transition:none!important}
 }
+
+
+/* Cross-page typography and art-direction consistency */
+.solutions-page .hero,
+.network-page .hero,
+.intelligence-page .hero,
+.why-page .hero,
+.contact-page .hero{
+  background:
+    radial-gradient(circle at 76% 22%,rgba(15,122,184,.21),transparent 30%),
+    linear-gradient(125deg,#040b12 0%,#07111b 49%,#061523 100%)!important;
+}
+.solutions-page .hero h1,
+.network-page .hero h1,
+.intelligence-page .hero h1,
+.why-page .hero h1,
+.contact-page .hero h1{
+  font-size:clamp(56px,5vw,84px)!important;
+  line-height:.98!important;
+  letter-spacing:-.056em!important;
+}
+.section-title,
+.split-head h2,
+.solution-copy h2,
+.partner-copy h2,
+.centered-head h2,
+.trust-grid h2,
+.decision-copy h2,
+.model-copy h2,
+.owned-grid h2,
+.inquiry-copy h2,
+.direct-grid h2,
+.final-inner h2{
+  font-size:clamp(42px,4vw,64px)!important;
+  line-height:1.01!important;
+  letter-spacing:-.05em!important;
+}
+.hero-copy>p,.hero .lede{
+  font-size:clamp(18px,1.35vw,21px)!important;
+  line-height:1.62!important;
+}
+.section-copy,.split-head>p,.centered-head>p,.solution-copy .lead,.partner-copy .lead,.inquiry-copy .lead{
+  line-height:1.68!important;
+}
+.solution-visual,.partner-console,.command-center,.hero-system,.network-stage,.loop-card,.distribution-diagram,.path-card,.property-card,.side-card,.signal-panel,.use-grid article,.next-grid article{
+  border-radius:22px!important;
+}
+
+/* Make section visual frames feel related even when their content differs. */
+.solution-visual,.partner-console,.command-center,.hero-system,.network-stage,.loop-card{
+  overflow:hidden!important;
+}
+.visual-header,.visual-top,.command-top,.stage-top,.loop-top,.console-top,.path-top{
+  letter-spacing:.12em!important;
+}
+
+/* Keep real property images visually aligned with the digital-system aesthetic. */
+.property-real-media{
+  transition:transform .28s ease,box-shadow .28s ease;
+}
+.property-real-media:hover{
+  transform:translateY(-2px);
+  box-shadow:0 24px 56px rgba(15,48,70,.15);
+}
+.property-real-media img{
+  transition:transform .45s cubic-bezier(.2,.72,.2,1);
+}
+.property-real-media:hover img{transform:scale(1.018)}
+
+/* Consistent section separation on light surfaces. */
+.problem-section,.signals-section,.loop-section,.use-section,.positioning-section,
+.why-network,.commerce-section,.two-sided-section,.trust-section,.connection-section,
+.fragmented-section,.difference-section,.owned-section,.what-next-section,.contact-direct,
+.system-overview,.outcomes-section{
+  position:relative;
+}
+@media(min-width:961px){
+  .solutions-page .hero-inner,
+  .network-page .hero-inner,
+  .why-page .hero-inner{min-height:660px!important}
+  .contact-page .hero-inner{min-height:630px!important}
+}
