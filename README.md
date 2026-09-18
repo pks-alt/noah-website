@@ -40,6 +40,40 @@ The Home, Solutions, and Our Network pages use the approved local property asset
 - Canonical URLs and Open Graph metadata are included on all indexable public content pages.
 - `404.html` is explicitly marked `noindex`.
 
+## SEO hardening completed
+
+- Search-focused page titles and unique meta descriptions across all indexable pages
+- Canonical URL on every indexable page
+- Explicit index/follow directives with large-image/snippet preview allowances
+- Open Graph site, title, description, URL, locale, image, and image-alt metadata
+- Twitter card metadata with image and accessible image description
+- Homepage Organization + WebSite + WebPage JSON-LD
+- Organization identity linked to the official LinkedIn company profile
+- Organization contact point for business inquiries
+- BreadcrumbList JSON-LD on secondary pages
+- Service/ItemList structured data for the four visible Solutions capabilities
+- AboutPage and ContactPage semantic schema where appropriate
+- robots.txt allows crawling and declares the XML sitemap
+- XML sitemap includes all 9 indexable pages and accurate 2026-09-18 lastmod values
+- Custom 404 is marked noindex
+- Descriptive heading hierarchy and substantial crawlable HTML copy on the core commercial pages
+- Internal contextual links connect Solutions, Network, Intelligence, Why NOAH, Contact, and the owned commerce properties
+- Approved property images are local, lazy-loaded, async-decoded, and include intrinsic dimensions
+
+### SEO tasks that require the production domain
+
+After deployment, complete these items against the live HTTPS domain:
+
+1. Verify ownership of **noahdigital.io** in Google Search Console.
+2. Submit **https://noahdigital.io/sitemap.xml** and inspect the core URLs.
+3. Run Google Rich Results Test / Schema validation on the deployed pages and resolve any production-only warnings.
+4. Run Lighthouse / PageSpeed Insights on mobile and desktop and address any Core Web Vitals regressions introduced by hosting, scripts, analytics, or form services.
+5. Add a compliant favicon and confirm that Google can crawl it.
+6. Add a dedicated 1200×630 social-sharing image and update Open Graph/Twitter metadata from the current NOAH lockup.
+7. Verify canonical redirects, HTTPS, robots.txt, sitemap.xml, 404 status behavior, and cache headers on the actual production host.
+8. Connect analytics and conversion measurement only after the tracking/consent approach is approved.
+9. Monitor Search Console indexing, structured-data enhancements, Core Web Vitals, crawl errors, and search queries after launch.
+
 ## Developer launch checklist
 
 Complete these items before production launch:
