@@ -57,7 +57,7 @@
           <em>→</em>
         </a>
       </div>
-      <div class="path-bottom"><span>Not sure which path fits?</span><a href="mailto:hello@noahdigital.com">hello@noahdigital.com ↗</a></div>
+      <div class="path-bottom"><span>Not sure which path fits?</span><a href="mailto:hello@noahdigital.io">hello@noahdigital.io ↗</a></div>
     </div>
   </div>
 </section>
@@ -159,7 +159,7 @@
 <section class="contact-direct">
   <div class="section-wrap direct-grid">
     <div><div class="section-kicker">DIRECT CONTACT</div><h2>Prefer to Email Us Directly?</h2><p>Send a short note with the growth objective or partnership opportunity you want to discuss. You do not need a formal brief.</p></div>
-    <a class="email-card" href="mailto:hello@noahdigital.com"><small>GENERAL INQUIRIES</small><strong>hello@noahdigital.com</strong><span>Start an email →</span></a>
+    <a class="email-card" href="mailto:hello@noahdigital.io"><small>GENERAL INQUIRIES</small><strong>hello@noahdigital.io</strong><span>Start an email →</span></a>
   </div>
 </section>
 </main>
@@ -197,8 +197,7 @@
 
 <script>
 
-const menuButton=document.querySelector('.menu-button'),mobileNav=document.querySelector('.mobile-nav');if(menuButton&&mobileNav){menuButton.addEventListener('click',()=>{const open=document.body.classList.toggle('menu-open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰';});mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('menu-open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰';}));}
-function mailFromForm(form,subjectPrefix){form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);const lines=[];for(const [key,value] of data.entries()){if(String(value).trim())lines.push(`${key.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase())}: ${value}`)}const company=data.get('company')||'';const subject=encodeURIComponent(`${subjectPrefix}${company?' — '+company:''}`);const body=encodeURIComponent(lines.join('\n\n'));window.location.href=`mailto:hello@noahdigital.com?subject=${subject}&body=${body}`;});}
+function mailFromForm(form,subjectPrefix){form.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(form);const lines=[];for(const [key,value] of data.entries()){if(String(value).trim())lines.push(`${key.replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUpperCase())}: ${value}`)}const company=data.get('company')||'';const subject=encodeURIComponent(`${subjectPrefix}${company?' — '+company:''}`);const body=encodeURIComponent(lines.join('\n\n'));window.location.href=`mailto:hello@noahdigital.io?subject=${subject}&body=${body}`;});}
 mailFromForm(document.getElementById('brand-form'),'NOAH Growth Inquiry');
 mailFromForm(document.getElementById('partner-form'),'Partner With NOAH');
 </script>
