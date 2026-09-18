@@ -37,18 +37,22 @@
 
   const cards=[...document.querySelectorAll('.network .property .browser-card')];
   const specs=[
-    {path:'assets/property/deals-final.txt',href:'https://www.dealscanvas.com/',alt:'DealsCanvas developed commerce showcase',label:'DealsCanvas · NOAH Commerce Property'},
-    {path:'assets/property/catch-final.txt',href:'https://www.catchthedeal.ai/',alt:'CatchTheDeal.ai developed smart shopping showcase',label:'CatchTheDeal.ai · NOAH Commerce Property'}
+    {mode:'base64',path:'assets/property/deals-final.txt',href:'https://www.dealscanvas.com/',alt:'DealsCanvas developed commerce showcase',label:'DealsCanvas · NOAH Commerce Property'},
+    {mode:'direct',src:'assets/property/catchthedeal-homepage.webp',href:'https://www.catchthedeal.ai/',alt:'CatchTheDeal.ai smart shopping and deals showcase',label:'CatchTheDeal.ai · NOAH Commerce Property'}
   ];
 
   await Promise.all(specs.map(async(spec,index)=>{
     const card=cards[index];
     if(!card)return;
     try{
-      const b64=await loadImage(spec.path);
+      let imageSrc=spec.src||'';
+      if(spec.mode==='base64'){
+        const b64=await loadImage(spec.path);
+        imageSrc='data:image/webp;base64,'+b64;
+      }
       const link=document.createElement('a');
       link.className='property-showcase-link';link.href=spec.href;link.target='_blank';link.rel='noopener';link.setAttribute('aria-label','Open '+spec.alt);
-      const img=document.createElement('img');img.className='property-showcase-img';img.alt=spec.alt;img.loading='lazy';img.decoding='async';img.src='data:image/webp;base64,'+b64;
+      const img=document.createElement('img');img.className='property-showcase-img';img.alt=spec.alt;img.loading='lazy';img.decoding='async';img.src=imageSrc;
       link.appendChild(img);
       const badge=document.createElement('span');badge.className='property-showcase-badge';badge.textContent=spec.label;
       card.replaceChildren(link,badge);
