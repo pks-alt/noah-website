@@ -14,7 +14,8 @@
   .home-page .audience-world{min-height:590px!important}
   .home-page .brand-digital,
   .home-page .partner-digital{
-    height:248px!important;
+    height:auto!important;
+    min-height:286px!important;
     margin:26px 30px 20px!important;
     margin-top:auto!important;
   }
