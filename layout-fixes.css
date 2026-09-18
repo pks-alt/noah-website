@@ -1,0 +1,174 @@
+/* NOAH layout stability pass — loaded last. Prevents text/card collisions and keeps every section responsive. */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg{max-width:100%}
+.section-wrap,.hero-inner,.header-inner,.solutions-head,.solutions-experience,.growth-v2-head,.growth-v2-layout,.audience-head,.audience-experience,.network-head,.network-layout,.intelligence-head,.command-body,.why-layout,.footer-grid{min-width:0}
+.solutions-head>*,.solutions-experience>*,.growth-v2-head>*,.growth-v2-layout>*,.audience-head>*,.audience-experience>*,.network-head>*,.network-layout>*,.intelligence-head>*,.command-body>*,.why-layout>*,.footer-grid>*{min-width:0}
+.section-title,h1,.audience-world h3,.partner-network h3,.property-copy h3,.why-row h3{overflow-wrap:normal;word-break:normal}
+.section-copy,.audience-world p,.property-copy p,.why-row p,.insight b{overflow-wrap:break-word}
+
+/* Header: avoid squeeze immediately above the mobile breakpoint. */
+@media(min-width:1081px) and (max-width:1260px){
+  .header-inner{grid-template-columns:205px minmax(0,1fr) auto!important;gap:16px!important}
+  .logo{width:190px!important}
+  .nav{gap:12px!important;font-size:12px!important}
+  .header-cta{padding:0 16px!important}
+}
+
+/* Hero: contain decorative cards without allowing horizontal page overflow. */
+.hero .visual,.hero .stage{min-width:0}
+.hero .node{max-width:min(198px,42vw)}
+
+/* Solutions: grid children are allowed to shrink; visual stays self-contained. */
+.solutions-visual,.solutions-capabilities{min-width:0}
+.system-module{max-width:calc(50% - 32px)}
+.capability-row>div{min-width:0}
+.solutions-foot{flex-wrap:wrap}
+
+/* Growth: make text and cycle rows wrap instead of colliding. */
+.growth-v2-step-copy{min-width:0}
+.growth-v2-cycle{grid-template-columns:auto minmax(0,1fr) auto!important}
+.growth-v2-cycle-path,.growth-v2-status,.journey-tags{flex-wrap:wrap}
+
+/*
+   Brands + Partners was the main overlap source.
+   The digital workspaces were absolutely positioned inside a fixed-height card,
+   so longer customer-facing copy could physically sit underneath them.
+   Put the visual panels back into normal document flow. The card can now grow.
+*/
+.audience-experience{align-items:stretch!important}
+.audience-world{
+  display:flex!important;
+  flex-direction:column!important;
+  height:auto!important;
+  min-height:650px!important;
+  overflow:hidden!important;
+}
+.world-copy{
+  position:relative!important;
+  flex:0 0 auto!important;
+  min-width:0!important;
+  padding-bottom:0!important;
+}
+.brand-digital,.partner-digital{
+  position:relative!important;
+  inset:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:auto!important;
+  flex:0 0 auto!important;
+  height:278px!important;
+  margin:30px 34px 23px!important;
+  margin-top:auto!important;
+}
+.audience-points{max-width:100%}
+.audience-points span{max-width:100%;white-space:normal;text-align:center}
+.audience-link{margin-bottom:0!important}
+.audience-bridge{align-self:stretch!important;min-width:0}
+
+/* Network: both copy and developed property visuals stay within each property card. */
+.partner-network,.properties,.property,.property-copy,.browser-card{min-width:0}
+.property{height:auto!important}
+.property-copy{overflow:visible!important}
+.property .browser-card{width:100%!important;max-width:100%!important}
+.property-showcase-link,.property-showcase-img{max-width:100%!important}
+.network-map{max-width:100%;overflow:hidden}
+.network-chip{max-width:46%;white-space:normal;text-align:center}
+
+/* Intelligence: long labels wrap cleanly and do not force cards wider. */
+.command-center,.command-main,.command-side,.signal-card,.insight{min-width:0}
+.signal-card b,.signal-card span,.insight b{overflow-wrap:break-word}
+.measure-flow{flex-wrap:wrap}
+.command-top{gap:16px}
+
+/* Why NOAH and footer: allow content to create height naturally. */
+.why-row>*{min-width:0}
+.trust-strip{align-items:flex-start}
+.footer-col,.footer-brand{min-width:0}
+.footer-col a{overflow-wrap:anywhere}
+
+@media(max-width:1180px){
+  .audience-world{min-height:0!important}
+  .brand-digital,.partner-digital{margin-top:28px!important}
+  .growth-v2-cycle{grid-template-columns:auto minmax(0,1fr)!important}
+  .growth-v2-cycle-path{grid-column:1/-1!important}
+}
+
+@media(max-width:900px){
+  .solutions-foot{align-items:flex-start!important}
+  .optimization-line{min-width:0}
+  .command-top{height:auto!important;min-height:48px;padding:12px 16px!important;flex-wrap:wrap}
+  .network-chip{font-size:9px!important;padding:8px 10px!important}
+}
+
+@media(max-width:720px){
+  .section-wrap,.hero-inner,.header-inner,.footer-inner{max-width:100%}
+
+  /* Hero cards remain decorative and fit the viewport. */
+  .hero .node{width:145px!important;max-width:40vw!important;padding:10px!important}
+  .hero .node strong{font-size:11px!important}
+  .hero .node small{font-size:8px!important}
+
+  /* Solutions mobile containment. */
+  .solutions-visual{min-height:720px!important}
+  .system-module{width:170px!important;max-width:44vw!important;padding:11px!important}
+  .system-core{width:128px!important;height:128px!important}
+  .system-core:before{inset:-24px!important}.system-core:after{inset:-58px!important}
+  .module-meta{gap:4px!important}.module-meta span{font-size:6px!important;padding:4px 5px!important}
+  .solutions-foot{gap:16px!important}
+
+  /* Growth mobile: give the visual a little more breathing room; hide the cramped status ribbon. */
+  .growth-v2-visual{min-height:690px!important}
+  .growth-v2-status{display:none!important}
+  .growth-v2-cycle{display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;gap:12px!important}
+  .growth-v2-cycle-path{grid-column:1/-1!important;justify-content:flex-start!important}
+
+  /* Brands/Partners: no absolute panels, no overlap, natural height. */
+  .audience-world{min-height:0!important}
+  .world-copy{padding:31px 24px 0!important}
+  .audience-world h3{font-size:clamp(32px,9.5vw,38px)!important;line-height:1.02!important}
+  .brand-digital,.partner-digital{
+    height:270px!important;
+    margin:24px 16px 16px!important;
+    margin-top:26px!important;
+  }
+  .brand-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .brand-kpis>div{min-width:0!important}
+  .partner-orbit{height:158px!important}
+  .opportunity-feed{grid-template-columns:1fr 1fr!important;gap:6px!important}
+  .opportunity-feed>div{min-width:0!important}
+
+  /* Network/property cards: stack copy above image and avoid fixed minimums. */
+  .network-layout{grid-template-columns:1fr!important}
+  .properties{grid-template-columns:1fr!important;grid-template-rows:none!important}
+  .property{grid-template-columns:1fr!important;gap:18px!important}
+  .property .browser-card{aspect-ratio:4/3!important}
+  .partner-network{min-height:470px!important}
+  .network-map{height:285px!important}
+
+  /* Intelligence/Why/Footer: everything stacks and grows naturally. */
+  .signal-row{grid-template-columns:1fr!important}
+  .signal-card:nth-child(n){display:block!important}
+  .command-body{grid-template-columns:1fr!important;min-height:0!important}
+  .command-main{border-right:0!important;border-bottom:1px solid rgba(255,255,255,.08)}
+  .measure-flow{gap:8px!important}
+  .why-row{grid-template-columns:42px minmax(0,1fr)!important;gap:14px!important}
+  .why-row p{grid-column:2!important}
+  .footer-grid{grid-template-columns:1fr 1fr!important}
+  .footer-brand{grid-column:1/-1!important}
+}
+
+@media(max-width:440px){
+  .section-title{font-size:clamp(34px,10vw,39px)!important}
+  .audience-world h3{font-size:32px!important}
+  .brand-digital,.partner-digital{height:auto!important;min-height:260px!important}
+  .digital-topbar{min-height:42px!important;height:auto!important;padding:10px 12px!important;gap:8px!important}
+  .brand-kpis{grid-template-columns:1fr!important}
+  .brand-kpis>div{min-height:46px!important}
+  .brand-chart{height:100px!important}
+  .partner-orbit{height:170px!important}
+  .opportunity-feed{grid-template-columns:1fr!important}
+  .network-chip{max-width:48%;font-size:8px!important}
+  .footer-grid{grid-template-columns:1fr!important}
+  .footer-brand{grid-column:auto!important}
+}
