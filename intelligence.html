@@ -229,17 +229,7 @@
 </footer>
 
 <script>
-(async()=>{
-  try{
-    const response=await fetch('index.html',{cache:'force-cache'});
-    if(response.ok){
-      const html=await response.text();
-      const doc=new DOMParser().parseFromString(html,'text/html');
-      const src=doc.querySelector('.logo')?.getAttribute('src');
-      if(src)document.querySelectorAll('[data-home-logo]').forEach(img=>img.src=src);
-    }
-  }catch(e){console.warn('NOAH logo fallback unavailable',e);}
-})();
+
 const menuButton=document.querySelector('.menu-button'),mobileNav=document.querySelector('.mobile-nav');
 if(menuButton&&mobileNav){
   menuButton.addEventListener('click',()=>{
