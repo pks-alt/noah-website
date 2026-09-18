@@ -15,7 +15,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="audiences" id="aud
           <h3>More Paths to<br>Customer Growth.</h3>
           <p>Use the Connected Growth System to acquire customers, extend distribution, create commerce pathways, and improve decisions.</p>
           <div class="audience-points"><span>Customer Acquisition</span><span>Revenue Growth</span><span>Market Expansion</span><span>Partner Activation</span><span>Performance Visibility</span></div>
-          <a class="audience-link" href="#contact">Grow With NOAH <span>→</span></a>
+          <a class="audience-link" href="contact.html">Grow With NOAH <span>→</span></a>
         </div>
 
         <div class="brand-digital" aria-label="Brand campaign and performance visualization">
@@ -46,7 +46,7 @@ document.body.insertAdjacentHTML('beforeend',`<section class="audiences" id="aud
           <h3>Turn Reach and Influence<br>Into Opportunity.</h3>
           <p>Connect with brands, campaigns, commerce opportunities, and performance-led programs across the NOAH ecosystem.</p>
           <div class="audience-points"><span>Brand Opportunities</span><span>Campaign Access</span><span>Commerce Activation</span><span>Monetization</span><span>Long-Term Partnerships</span></div>
-          <a class="audience-link" href="#contact">Partner With NOAH <span>→</span></a>
+          <a class="audience-link" href="contact.html#partner-inquiry">Partner With NOAH <span>→</span></a>
         </div>
 
         <div class="partner-digital" aria-label="Partner opportunity network visualization">
