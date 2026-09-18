@@ -8,40 +8,26 @@ document.body.insertAdjacentHTML('beforeend',`<section class="intelligence" id="
   <div class="section-wrap why-inner reveal"><div class="why-layout"><div class="why-sticky"><div class="section-kicker">Why NOAH</div><h2 class="section-title">Designed to Work<br>as One.</h2><p class="section-copy">NOAH is differentiated by the connections between capabilities—not simply the capabilities themselves.</p></div><div><div class="why-rows"><article class="why-row"><span class="num">01</span><h3>Shared Commercial Objective</h3><p>Media, partnerships, commerce, and intelligence operating as one ecosystem.</p></article><article class="why-row"><span class="num">02</span><h3>Connected Handoffs</h3><p>Programs designed around measurable commercial outcomes and continuous optimization.</p></article><article class="why-row"><span class="num">03</span><h3>Partner + Owned Distribution</h3><p>NOAH-owned commerce destinations complement external partner and media reach.</p></article><article class="why-row"><span class="num">04</span><h3>Intelligence in the Loop</h3><p>A flexible operating model designed to connect growth opportunities across channels and markets.</p></article><article class="why-row"><span class="num">05</span><h3>Flexible Activation</h3><p>Performance signals help determine what to scale, adjust, and activate next.</p></article></div><div class="trust-strip"><span>Partner Vetting</span><span>Traffic Quality</span><span>Fraud Prevention</span><span>Brand Safety</span><span>Ongoing Monitoring</span></div></div></div></div>
 </section>
 <section class="final-cta" id="contact"><div class="final-inner reveal"><div class="final-kicker">Start the Conversation</div><h2>Start With the Growth Outcome.</h2><p>Tell us what you want to improve. NOAH can connect the right capability, network path, or intelligence layer around that objective.</p><div class="final-actions"><a class="btn cta" href="#">Talk to Our Growth Team →</a><a class="btn final-secondary" href="#">Partner With NOAH →</a></div></div></section>
-<footer class="site-footer"><div class="footer-inner"><div class="footer-grid"><div class="footer-brand"><div class="footer-wordmark">NOAH <span>DIGITAL</span></div><p>Global Performance Commerce — connecting customer acquisition, partner distribution, owned commerce, and intelligence around measurable growth.</p></div><div class="footer-col"><h5>Solutions</h5><a href="solutions.html">Performance Media</a><a href="solutions.html#partnerships">Performance Partnerships</a><a href="solutions.html#commerce">Owned Commerce</a><a href="intelligence.html">NOAH Intelligence</a></div><div class="footer-col"><h5>NOAH</h5><a href="network.html">Our Network</a><a href="why.html">Why NOAH</a><a href="contact.html">Contact</a><a href="#">Careers</a></div><div class="footer-col"><h5>Properties</h5><a href="https://www.dealscanvas.com/" target="_blank" rel="noopener">DealsCanvas ↗</a><a href="https://www.catchthedeal.ai/" target="_blank" rel="noopener">CatchTheDeal.ai ↗</a></div><div class="footer-col"><h5>Connect</h5><a href="#">LinkedIn</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div></div><div class="footer-bottom"><span>© 2026 NOAH Digital. All rights reserved.</span><span>Global Performance Commerce</span></div></div></footer>`);
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" aria-label="NOAH Digital home"><img src="assets/noah-lockup.png" alt="NOAH Digital"></a>
+        <p>Global Performance Commerce — connecting customer acquisition, partner distribution, owned commerce, and intelligence through one Connected Growth System.</p>
+        <a class="footer-domain" href="https://noahdigital.io/" target="_blank" rel="noopener">noahdigital.io ↗</a>
+      </div>
+      <div class="footer-col"><h4>Solutions</h4><a href="solutions.html#media">Performance Media</a><a href="solutions.html#partnerships">Performance Partnerships</a><a href="solutions.html#commerce">Owned Commerce</a><a href="intelligence.html">NOAH Intelligence</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="network.html">Our Network</a><a href="why.html">Why NOAH</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Properties</h4><a href="https://www.dealscanvas.com/" target="_blank" rel="noopener">DealsCanvas ↗</a><a href="https://www.catchthedeal.ai/" target="_blank" rel="noopener">CatchTheDeal.ai ↗</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 NOAH Digital. All rights reserved.</span><a href="https://noahdigital.io/" target="_blank" rel="noopener">noahdigital.io</a></div>
+  </div>
+</footer>`);
 
-/* Final art-direction stylesheet is intentionally loaded last so it only refines the approved page. */
-const noahPolish=document.createElement('link');
-noahPolish.rel='stylesheet';
-noahPolish.href='polish.css';
-document.head.appendChild(noahPolish);
-
-/* Final site navigation and homepage content architecture. */
-const noahNav=[...document.querySelectorAll('.nav a')];
-const noahNavTargets={0:'solutions.html',1:'network.html',4:'intelligence.html',5:'why.html'};
-Object.entries(noahNavTargets).forEach(([index,target])=>{if(noahNav[Number(index)])noahNav[Number(index)].setAttribute('href',target)});
-const noahHeaderCta=document.querySelector('.header-cta');
-if(noahHeaderCta)noahHeaderCta.setAttribute('href','contact.html');
+/* Homepage CTA routing. */
 const noahHeroCtas=document.querySelectorAll('.hero-actions a');
 if(noahHeroCtas[0])noahHeroCtas[0].setAttribute('href','contact.html');
 if(noahHeroCtas[1])noahHeroCtas[1].setAttribute('href','contact.html#partner-inquiry');
-
-/* Lightweight mobile navigation using the existing approved menu icon. */
-const noahMenu=document.querySelector('.menu');
-if(noahMenu){
-  noahMenu.setAttribute('role','button');
-  noahMenu.setAttribute('tabindex','0');
-  noahMenu.setAttribute('aria-label','Open navigation');
-  noahMenu.setAttribute('aria-expanded','false');
-  const toggleNoahMenu=()=>{
-    const open=document.body.classList.toggle('noah-menu-open');
-    noahMenu.setAttribute('aria-expanded',String(open));
-    noahMenu.textContent=open?'×':'☰';
-  };
-  noahMenu.addEventListener('click',toggleNoahMenu);
-  noahMenu.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleNoahMenu();}});
-  noahNav.forEach(link=>link.addEventListener('click',()=>{document.body.classList.remove('noah-menu-open');noahMenu.setAttribute('aria-expanded','false');noahMenu.textContent='☰';}));
-}
 
 /* Final homepage messaging: overview first, deeper pages own the detail. */
 const setHTML=(selector,html)=>{const el=document.querySelector(selector);if(el)el.innerHTML=html};
