@@ -1,3 +1,23 @@
+/* Global foundation — required by every page, including legal pages. */
+*,*::before,*::after{box-sizing:border-box}
+html{margin:0;padding:0;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding:0;
+  min-width:320px;
+  background:#fff;
+  color:#07101a;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit}
+button{color:inherit}
+h1,h2,h3,h4,h5,p{overflow-wrap:break-word}
+::selection{background:rgba(18,123,255,.18);color:#07101a}
+
 .skip-link{
   position:fixed;
   left:18px;
