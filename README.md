@@ -1,32 +1,62 @@
-# NOAH Website
+# NOAH Digital Website
 
-Official redesign workspace for NOAH Digital / NOAH master brand.
+Production-ready static website for **NOAH Digital**.
 
-## Current phase
-Homepage design prototype and brand system validation.
+- Primary domain: **https://noahdigital.io/**
+- Contact email: **hello@noahdigital.io**
+- Positioning: **Global Performance Commerce**
+- Core model: **Connected Growth System**
+- Canonical journey: **Acquire → Expand → Convert → Learn → Improve**
 
-## Direction
-NOAH is positioned as a global performance-commerce company combining:
-- Performance Media
-- Performance Partnerships
-- Owned Commerce Network
-- Noah Intelligence
+## Core pages
 
-## Brand rules
-- Use the approved NOAH primary transparent logo from `assets/noah-logo.png` on light backgrounds only.
-- Do not recreate or approximate the logo in SVG/CSS.
-- Keep imagery high-resolution, current, commercial, and digital-first.
-- The website should feel like a premium performance-marketing brand, not a SaaS/product-engineering website.
-- No unverified client metrics or performance claims.
-- Insights is not part of the current homepage.
+- `index.html` — Home
+- `solutions.html` — Solutions
+- `network.html` — Our Network
+- `intelligence.html` — NOAH Intelligence
+- `why.html` — Why NOAH
+- `contact.html` — Brand / Partner inquiries
 
-## Files
-- `index.html` — current homepage design prototype
-- `assets/noah-logo.png` — approved master logo asset
-- `docs/homepage-structure.md` — locked homepage flow and design intent
+## Shared system
 
-## Next steps
-1. Review homepage section by section.
-2. Replace temporary/stock visuals with approved campaign, owned-property, and dashboard assets.
-3. Finalize mobile behavior and accessibility.
-4. Convert the approved design into the production Next.js + TypeScript application.
+- `site-system.css` — shared header, footer, typography, visual-system rules
+- `site-shell.js` — shared mobile-navigation behavior
+- `preqa-polish.css` — final spacing and responsive polish
+- `assets/noah-lockup.png` — canonical NOAH logo
+- `assets/property/dealscanvas-homepage.webp` — approved DealsCanvas visual
+- `assets/property/catchthedeal-homepage.avif` — approved CatchTheDeal.ai visual
+
+## SEO / launch files
+
+- `robots.txt`
+- `sitemap.xml`
+- Canonical URLs and Open Graph metadata are included on all core pages.
+
+## Important deployment notes
+
+1. The contact forms currently open the visitor's default email client and send to `hello@noahdigital.io`. If production requires server-side form delivery, replace the mailto workflow during deployment.
+2. Configure the production host for `noahdigital.io`, HTTPS, and a single canonical host (redirect `www` or non-`www` consistently).
+3. Verify AVIF/WebP MIME types and long-lived caching for static assets.
+4. Add production analytics / tag management only after the final tracking requirements are approved.
+5. A dedicated square favicon and 1200×630 social-share image are recommended before public launch. The current social metadata uses the NOAH lockup asset.
+6. Verify any promotional language visible inside approved property showcase images before public launch.
+7. Run final visual smoke tests in Chrome, Safari, Edge, iOS Safari, and Android Chrome after deployment to the production host.
+
+## QA status
+
+Code-level final QA completed before developer handoff:
+- Shared header/footer normalized across all six pages
+- Internal links and section anchors checked
+- No dead placeholder links
+- No duplicate IDs
+- One H1 per page
+- Image paths and alt text checked
+- Direct local assets used for logo and owned-property visuals
+- JavaScript syntax checked
+- CSS brace structure checked
+- Responsive mobile navigation standardized
+- Skip-to-content accessibility link added
+- Domain/email standardized to `noahdigital.io`
+- Legacy prototype wording and old optimization/activation language removed
+
+The developer should perform the final browser/device review and deployment verification on the production environment.
