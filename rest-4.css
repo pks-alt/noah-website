@@ -1,0 +1,208 @@
+/* Why NOAH */
+.why{background:#fff}.why-inner{padding:110px 0 102px}.why-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:96px}.why-sticky{align-self:start;position:sticky;top:40px}.why-sticky .section-copy{margin-top:23px;max-width:430px}.why-rows{border-top:1px solid rgba(7,16,26,.14)}.why-row{display:grid;grid-template-columns:66px .62fr 1fr;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid rgba(7,16,26,.1)}.why-row .num{color:#1475d7;font-size:10px;font-weight:900;letter-spacing:.12em}.why-row h3{margin:0;font-size:19px;letter-spacing:-.03em}.why-row p{margin:0;color:#6c7782;font-size:13px;line-height:1.58}.trust-strip{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}.trust-strip span{padding:9px 12px;border-radius:999px;border:1px solid rgba(7,16,26,.09);background:#f7f9fa;color:#63717c;font-size:9px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+/* Final CTA */
+.final-cta{position:relative;overflow:hidden;background:linear-gradient(125deg,#040a11,#07121d 52%,#081a27);color:#fff}.final-cta:before{content:"";position:absolute;width:760px;height:760px;right:-260px;top:-360px;border-radius:50%;background:radial-gradient(circle,rgba(21,187,207,.17),transparent 66%)}.final-cta:after{content:"";position:absolute;left:-250px;bottom:-330px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(20,113,255,.12),transparent 68%)}
+.final-inner{position:relative;z-index:2;width:min(1120px,calc(100% - 56px));margin:auto;padding:114px 0 108px;text-align:center}.final-kicker{color:#4cd1d4;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.final-inner h2{margin:18px auto 0;max-width:930px;font-size:clamp(46px,5.2vw,78px);line-height:.99;letter-spacing:-.055em}.final-inner p{max-width:720px;margin:26px auto 0;color:#8fa1b2;font-size:17px;line-height:1.62}.final-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:34px}.final-secondary{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);color:#edf5fa}
+/* Footer */
+.site-footer{background:#03080d;color:#91a2b1;border-top:1px solid rgba(255,255,255,.07)}.footer-inner{width:min(1480px,calc(100% - 56px));margin:auto;padding:58px 0 28px}.footer-grid{display:grid;grid-template-columns:1.35fr repeat(4,.72fr);gap:54px;padding-bottom:46px}.footer-wordmark{color:#fff;font-size:22px;font-weight:900;letter-spacing:-.04em}.footer-wordmark span{display:block;margin-top:3px;color:#718495;font-size:8px;font-weight:800;letter-spacing:.34em}.footer-brand p{max-width:330px;margin:18px 0 0;color:#728595;font-size:12px;line-height:1.6}.footer-col h5{margin:0 0 16px;color:#dfe9f2;font-size:10px;letter-spacing:.14em;text-transform:uppercase}.footer-col a{display:block;margin:10px 0;color:#718495;font-size:11px;transition:color .2s ease}.footer-col a:hover{color:#fff}.footer-bottom{display:flex;justify-content:space-between;gap:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);color:#596b7a;font-size:10px}
+.reveal{opacity:1;transform:none}
+@media(max-width:1120px){.solutions-head,.network-head,.intelligence-head{grid-template-columns:1fr;gap:24px}.solution-grid{grid-template-columns:1fr 1fr}.solution-item{min-height:285px}.solution-item:nth-child(2){border-right:0;margin-right:0}.solution-rail{display:none}.growth-flow{grid-template-columns:1fr 1fr;gap:0 24px}.growth-flow:before{display:none}.audience-stage{grid-template-columns:1fr}.network-layout{grid-template-columns:1fr}.partner-network{min-height:520px}.properties{grid-template-columns:1fr 1fr;grid-template-rows:none}.property{grid-template-columns:1fr}.intelligence-head{align-items:start}.command-body{grid-template-columns:1fr}.command-main{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}.why-layout{grid-template-columns:1fr;gap:52px}.why-sticky{position:static}.footer-grid{grid-template-columns:1.2fr 1fr 1fr;gap:38px}.footer-brand{grid-column:1/-1}.audience-head{align-items:start;flex-direction:column;gap:20px}}
+@media(max-width:720px){.section-wrap,.footer-inner{width:calc(100% - 36px)}.solutions-inner,.growth-inner,.audiences-inner,.network-inner,.intelligence-inner,.why-inner{padding:78px 0 72px}.section-title{font-size:40px}.section-copy{font-size:15px}.solutions-head,.network-head{margin-bottom:46px}.solution-grid,.growth-flow,.properties{grid-template-columns:1fr}.solution-item{min-height:0;padding:34px 0}.solution-item:not(:last-child){border-right:0;border-bottom:1px solid rgba(7,16,26,.09);margin-right:0;padding-right:0}.solution-icon{margin-top:24px}.solution-loop{align-items:flex-start;flex-direction:column}.growth-step{min-height:0;padding:26px 0 34px;margin-right:0!important;border-bottom:1px solid rgba(7,16,26,.08)}.growth-cycle{grid-template-columns:auto 1fr}.cycle-path{grid-column:1/-1}.audience-panel{padding:42px 28px;min-height:520px}.network-layout{gap:20px}.partner-network{padding:30px 22px}.network-map{height:330px}.property{padding:24px}.command-main,.command-side{padding:18px}.signal-row{grid-template-columns:1fr}.signal-card:nth-child(n+2){display:none}.command-body{min-height:0}.why-row{grid-template-columns:45px 1fr}.why-row p{grid-column:2}.final-inner{width:calc(100% - 36px);padding:88px 0}.final-inner h2{font-size:45px}.final-actions{flex-direction:column}.final-actions .btn{width:100%}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.footer-bottom{flex-direction:column}.audience-stage{border-radius:18px}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* Finalized primary navigation */
+@media(min-width:1081px){
+  .nav a:nth-child(3),
+  .nav a:nth-child(4),
+  .nav a:nth-child(7){display:none}
+  .nav a:nth-child(2),
+  .nav a:nth-child(6){font-size:0}
+  .nav a:nth-child(2)::before{content:"Our Network";font-size:13px;font-weight:650;letter-spacing:0}
+  .nav a:nth-child(6)::before{content:"Why NOAH";font-size:13px;font-weight:650;letter-spacing:0}
+  .header-actions>a:first-child{display:none}
+}
+
+/* Final homepage vertical rhythm — tightened after full-page review */
+.solutions-inner{padding:82px 0 72px!important}
+.solutions-head{margin-bottom:44px!important}
+.solutions-foot{margin-top:20px!important;padding-top:18px!important}
+.growth-inner{padding:82px 0 74px!important}
+.growth-head{margin-bottom:44px!important}
+.audiences-inner{padding:82px 0 76px!important}
+.audience-head{margin-bottom:42px!important}
+.audience-world{min-height:700px!important}
+.brand-digital,.partner-digital{bottom:28px!important}
+.audience-footer-line{margin-top:20px!important}
+.network-inner{padding:82px 0 78px!important}
+.network-head{margin-bottom:44px!important}
+.partner-network{min-height:555px!important;padding:36px!important}
+.network-map{height:338px!important;margin-top:24px!important}
+.properties{gap:18px!important}
+.property{padding:26px!important}
+.intelligence-inner{padding:84px 0 80px!important}
+.intelligence-head{margin-bottom:42px!important}
+.command-body{min-height:390px!important}
+.chart{height:198px!important}
+.why-inner{padding:80px 0 74px!important}
+.why-layout{gap:70px!important}
+.why-sticky .section-copy{margin-top:18px!important}
+.why-row{padding:22px 0!important}
+.trust-strip{margin-top:24px!important}
+.final-inner{padding:88px 0 84px!important}
+.final-inner p{margin-top:20px!important}
+.final-actions{margin-top:26px!important}
+.footer-inner{padding:44px 0 22px!important}
+.footer-grid{gap:42px!important;padding-bottom:34px!important}
+.footer-brand p{margin-top:14px!important}
+
+@media(max-width:1120px){
+  .solutions-inner,.growth-inner,.audiences-inner,.network-inner,.intelligence-inner,.why-inner{padding:74px 0 68px!important}
+  .solutions-head,.growth-head,.audience-head,.network-head,.intelligence-head{margin-bottom:38px!important}
+  .audience-world{min-height:670px!important}
+  .partner-network{min-height:510px!important}
+  .why-layout{gap:44px!important}
+  .final-inner{padding:80px 0 76px!important}
+}
+
+@media(max-width:720px){
+  .solutions-inner,.growth-inner,.audiences-inner,.network-inner,.intelligence-inner,.why-inner{padding:62px 0 58px!important}
+  .solutions-head,.growth-head,.audience-head,.network-head,.intelligence-head{margin-bottom:30px!important}
+  .solutions-foot{margin-top:14px!important;padding-top:14px!important}
+  .audience-world{min-height:640px!important}
+  .brand-digital,.partner-digital{bottom:16px!important}
+  .partner-network{min-height:470px!important;padding:26px 20px!important}
+  .network-map{height:290px!important;margin-top:18px!important}
+  .property{padding:20px!important}
+  .command-body{min-height:0!important}
+  .chart{height:180px!important}
+  .why-row{padding:18px 0!important}
+  .trust-strip{margin-top:18px!important}
+  .final-inner{padding:70px 0 68px!important}
+  .final-inner p{margin-top:17px!important}
+  .final-actions{margin-top:22px!important}
+  .footer-inner{padding:36px 0 18px!important}
+  .footer-grid{gap:28px!important;padding-bottom:26px!important}
+}
+
+/* Final art-direction pass — hierarchy, proportion and continuity */
+html{scroll-padding-top:96px}
+.section-kicker{margin-bottom:14px!important}
+.section-title{font-size:clamp(40px,3.7vw,62px)!important;line-height:1!important;letter-spacing:-.047em!important}
+.section-copy{font-size:16px!important;line-height:1.62!important}
+.solutions-head,.growth-v2-head,.audience-head,.network-head,.intelligence-head{gap:clamp(46px,5.7vw,78px)!important}
+
+/* Keep the hero dominant; supporting sections feel intentional, not oversized */
+.solutions-inner{padding:76px 0 68px!important}
+.solutions-head{margin-bottom:38px!important}
+.solutions-visual{min-height:570px!important;border-radius:22px!important;box-shadow:0 22px 62px rgba(10,35,54,.10)!important}
+.solutions-experience{gap:30px!important}
+.capability-row{padding-top:20px!important;padding-bottom:20px!important}
+.solutions-foot{margin-top:18px!important;padding-top:17px!important}
+
+/* Growth v2 was still using its original tall spacing; correct it and alternate the visual rhythm */
+.growth-v2{background:linear-gradient(180deg,#fff 0%,#f6f9fb 100%)!important}
+.growth-v2-inner{padding:74px 0 68px!important}
+.growth-v2-head{margin-bottom:40px!important}
+.growth-v2-layout{gap:36px!important}
+.growth-v2-step{padding-top:21px!important;padding-bottom:21px!important}
+.growth-v2-visual{min-height:590px!important;border-radius:22px!important;box-shadow:0 22px 62px rgba(10,35,54,.10)!important}
+.growth-v2-cycle{margin-top:26px!important;padding:18px 21px!important;border-radius:16px!important}
+
+/* Brands + Partners: immersive, but no longer a page-length wall */
+.audiences{background:linear-gradient(180deg,#f4f7f9 0%,#f0f4f6 100%)!important}
+.audiences-inner{padding:76px 0 70px!important}
+.audience-head{margin-bottom:39px!important}
+.audience-experience{grid-template-columns:minmax(0,1fr) 94px minmax(0,1fr)!important}
+.audience-world{min-height:650px!important;border-radius:22px!important;box-shadow:0 22px 62px rgba(10,35,54,.10)!important}
+.world-copy{padding:43px 43px 0!important}
+.audience-world h3{font-size:clamp(33px,2.75vw,48px)!important}
+.audience-points{margin-top:22px!important}
+.audience-link{margin-top:23px!important}
+.brand-digital,.partner-digital{left:34px!important;right:34px!important;bottom:23px!important;height:278px!important;border-radius:16px!important}
+.digital-topbar{height:42px!important}
+.brand-kpis>div{min-height:56px!important;padding:9px 10px!important}
+.brand-chart{height:108px!important;margin-top:8px!important}
+.brand-bottom{height:38px!important}
+.partner-orbit{height:160px!important;margin-top:8px!important}
+.bridge-line{height:105px!important}
+.bridge-core{width:86px!important;height:86px!important}
+.audience-footer-line{margin-top:18px!important}
+
+/* Network: visually one ecosystem rather than a collection of cards */
+.network-inner{padding:76px 0 70px!important}
+.network-head{margin-bottom:39px!important}
+.network-layout{gap:26px!important}
+.partner-network{min-height:520px!important;padding:32px!important;border-radius:22px!important;box-shadow:0 22px 62px rgba(10,35,54,.10)!important}
+.network-map{height:310px!important;margin-top:20px!important}
+.properties{gap:16px!important}
+.property{padding:23px!important;border-radius:20px!important;background:#f8fafb!important;border-color:rgba(7,16,26,.085)!important}
+.browser-card{border-radius:12px!important;box-shadow:0 14px 34px rgba(20,47,70,.08)!important}
+
+/* Intelligence remains the strongest dark section after the hero */
+.intelligence-inner{padding:78px 0 74px!important}
+.intelligence-head{margin-bottom:39px!important}
+.command-center{border-radius:22px!important;box-shadow:0 26px 72px rgba(0,0,0,.27)!important}
+.command-top{height:48px!important}
+.command-body{min-height:370px!important}
+.command-main,.command-side{padding:22px!important}
+.chart{height:180px!important;margin-top:18px!important}
+.signal-row{gap:10px!important}
+.signal-card{padding:14px!important}
+
+/* Editorial contrast after Intelligence */
+.why{background:linear-gradient(180deg,#fff 0%,#fafbfc 100%)!important}
+.why-inner{padding:74px 0 68px!important}
+.why-layout{gap:62px!important}
+.why-sticky .section-copy{margin-top:17px!important}
+.why-row{padding:19px 0!important}
+.trust-strip{margin-top:20px!important}
+
+/* Closing CTA is a finish, not another hero */
+.final-inner{padding:76px 0 72px!important}
+.final-inner h2{font-size:clamp(42px,4.5vw,68px)!important;max-width:880px!important}
+.final-inner p{margin-top:18px!important;font-size:16px!important}
+.final-actions{margin-top:24px!important}
+.footer-inner{padding:38px 0 20px!important}
+.footer-grid{gap:36px!important;padding-bottom:28px!important}
+.footer-brand p{margin-top:12px!important}
+
+/* Refined interaction language */
+.property{transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+@media(hover:hover){.property:hover{transform:translateY(-3px);border-color:rgba(18,123,255,.16)!important;box-shadow:0 18px 42px rgba(19,53,78,.08)}}
+
+@media(max-width:1180px){
+  .growth-v2-layout{grid-template-columns:1fr!important;gap:28px!important}
+  .growth-v2-steps{display:grid!important;grid-template-columns:1fr 1fr!important;gap:0 24px!important;border-top:0!important}
+  .growth-v2-step:nth-child(-n+2){border-top:1px solid rgba(7,16,26,.095)!important}
+  .growth-v2-visual{min-height:560px!important}
+  .audience-experience{grid-template-columns:1fr!important;gap:18px!important}
+  .audience-bridge{display:none!important}
+  .audience-world{min-height:630px!important}
+}
+
+@media(max-width:720px){
+  html{scroll-padding-top:78px}
+  .section-title{font-size:39px!important}
+  .section-copy{font-size:15px!important}
+  .solutions-inner,.growth-v2-inner,.audiences-inner,.network-inner,.intelligence-inner,.why-inner{padding:58px 0 54px!important}
+  .solutions-head,.growth-v2-head,.audience-head,.network-head,.intelligence-head{margin-bottom:28px!important}
+  .growth-v2-steps{grid-template-columns:1fr!important}
+  .growth-v2-step:nth-child(n){border-top:0!important}.growth-v2-step:first-child{border-top:1px solid rgba(7,16,26,.095)!important}
+  .growth-v2-visual{min-height:640px!important;border-radius:18px!important}
+  .audience-world{min-height:620px!important;border-radius:18px!important}
+  .world-copy{padding:31px 24px 0!important}
+  .audience-world h3{font-size:36px!important}
+  .brand-digital,.partner-digital{left:16px!important;right:16px!important;bottom:16px!important;height:270px!important}
+  .partner-network{min-height:450px!important;padding:24px 19px!important;border-radius:18px!important}
+  .network-map{height:275px!important;margin-top:16px!important}
+  .property{padding:19px!important;border-radius:16px!important}
+  .command-main,.command-side{padding:17px!important}
+  .chart{height:170px!important}
+  .why-row{padding:17px 0!important}
+  .final-inner{padding:64px 0 62px!important}
+  .final-inner h2{font-size:43px!important}
+  .footer-inner{padding:32px 0 18px!important}
+  .footer-grid{gap:26px!important;padding-bottom:24px!important}
+}
+
+@media(prefers-reduced-motion:reduce){.property{transition:none!important}}

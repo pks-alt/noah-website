@@ -1,0 +1,80 @@
+/* Brands + Partners — premium two-sided ecosystem */
+.audiences{position:relative;overflow:hidden;background:linear-gradient(180deg,#f4f7f9 0%,#eef3f6 100%);border-top:1px solid rgba(7,16,26,.08);border-bottom:1px solid rgba(7,16,26,.08)}
+.audiences:before{content:"";position:absolute;width:680px;height:680px;left:-330px;top:180px;border-radius:50%;background:radial-gradient(circle,rgba(18,123,255,.085),transparent 68%);pointer-events:none}
+.audiences:after{content:"";position:absolute;width:620px;height:620px;right:-300px;bottom:-120px;border-radius:50%;background:radial-gradient(circle,rgba(24,210,207,.10),transparent 68%);pointer-events:none}
+.audiences-inner{position:relative;z-index:1;padding:112px 0 104px}
+.audience-head{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.72fr);gap:82px;align-items:end;margin-bottom:58px}
+.audience-head .section-copy{max-width:540px;margin-left:auto}
+
+.audience-experience{display:grid;grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr);align-items:stretch}
+.audience-world{position:relative;min-height:780px;overflow:hidden;border-radius:28px;box-shadow:0 28px 76px rgba(16,42,63,.13)}
+.brand-world{background:radial-gradient(circle at 85% 10%,rgba(19,139,220,.18),transparent 30%),linear-gradient(145deg,#06101a 0%,#0a1c2a 58%,#07121d 100%);color:#fff;border:1px solid rgba(255,255,255,.07)}
+.partner-world{background:radial-gradient(circle at 88% 14%,rgba(27,208,203,.13),transparent 28%),linear-gradient(145deg,#ffffff 0%,#f5fafb 62%,#edf5f6 100%);color:#07101a;border:1px solid rgba(7,16,26,.08)}
+.world-copy{position:relative;z-index:4;padding:52px 52px 0}
+.audience-tag{display:inline-flex;align-items:center;gap:9px;color:#4bd2d5;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.audience-tag:before{content:"";width:20px;height:1px;background:currentColor}
+.partner-world .audience-tag{color:#1473d5}
+.audience-world h3{max-width:610px;margin:21px 0 20px;font-size:clamp(34px,3.1vw,52px);line-height:1.01;letter-spacing:-.052em;font-weight:760}
+.brand-world h3{color:#f4f9fd}.partner-world h3{color:#0b1722}
+.audience-world p{max-width:570px;margin:0;font-size:14.5px;line-height:1.66;letter-spacing:-.01em}
+.brand-world p{color:#8ea2b4}.partner-world p{color:#65727e}
+.audience-points{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.audience-points span{padding:8px 11px;border-radius:999px;font-size:9px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.brand-world .audience-points span{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#91a5b7}
+.partner-world .audience-points span{border:1px solid rgba(7,16,26,.08);background:#fff;color:#63727d;box-shadow:0 5px 15px rgba(22,62,88,.035)}
+.audience-link{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-size:12px;font-weight:850}
+.brand-world .audience-link{color:#f3f8fc}.partner-world .audience-link{color:#0e70d5}
+.audience-link span{transition:transform .2s ease}.audience-link:hover span{transform:translateX(4px)}
+
+/* Brands digital workspace */
+.brand-digital{position:absolute;left:44px;right:44px;bottom:42px;height:320px;border-radius:20px;overflow:hidden;border:1px solid rgba(140,192,225,.14);background:linear-gradient(155deg,rgba(16,35,50,.94),rgba(7,19,29,.92));box-shadow:0 25px 58px rgba(0,0,0,.27),inset 0 0 0 1px rgba(255,255,255,.02)}
+.digital-topbar{height:47px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(4,12,19,.38);color:#7290a5;font-size:7.5px;font-weight:900;letter-spacing:.14em}
+.digital-topbar>span{display:flex;align-items:center;gap:8px}.digital-topbar i{display:block;width:6px;height:6px;border-radius:50%;background:#27d3d1;box-shadow:0 0 10px rgba(39,211,209,.8)}
+.digital-topbar b{padding:5px 8px;border-radius:999px;border:1px solid rgba(37,208,208,.16);color:#31ced0;font-size:6.5px;letter-spacing:.14em}
+.brand-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:13px 14px 0}
+.brand-kpis>div{position:relative;min-height:66px;padding:11px 12px;border-radius:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05)}
+.brand-kpis small{display:block;color:#526d81;font-size:6px;font-weight:850;letter-spacing:.1em}.brand-kpis strong{display:block;margin-top:5px;color:#2fd2d1;font-size:16px}.brand-kpis em{position:absolute;right:10px;bottom:10px;color:#647f92;font-size:7px;font-style:normal}
+.brand-chart{position:relative;height:135px;margin:10px 14px 0;overflow:hidden;border-radius:13px;border:1px solid rgba(255,255,255,.05);background:linear-gradient(180deg,rgba(22,96,140,.08),rgba(255,255,255,.014))}
+.chart-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 34px}
+.brand-chart svg{position:absolute;left:10px;right:10px;bottom:14px;width:calc(100% - 20px);height:102px;filter:drop-shadow(0 0 8px rgba(24,210,207,.22))}
+.chart-label{position:absolute;bottom:9px;color:#47657b;font-size:6px;font-weight:900;letter-spacing:.11em}.chart-label.c1{left:11px}.chart-label.c2{left:44%}.chart-label.c3{right:11px}
+.brand-bottom{height:45px;padding:0 14px;display:grid;grid-template-columns:auto auto 1fr;gap:8px;align-items:center;color:#738ca0;font-size:7px}.brand-bottom b{color:#b6c7d5;font-size:8px}.brand-bottom small{text-align:right;color:#4f697d;font-size:6.5px}.live-dot{width:6px;height:6px;border-radius:50%;background:#25d3d0;box-shadow:0 0 12px rgba(37,211,208,.75)}
+
+/* Partners digital network */
+.partner-digital{position:absolute;left:44px;right:44px;bottom:42px;height:320px;border-radius:20px;overflow:hidden;border:1px solid rgba(21,94,141,.10);background:linear-gradient(150deg,#f9fcfd,#edf6f7);box-shadow:0 25px 55px rgba(30,76,105,.10),inset 0 0 0 1px rgba(255,255,255,.9)}
+.digital-topbar.light{background:rgba(255,255,255,.76);border-bottom-color:rgba(7,16,26,.07);color:#64808f}.digital-topbar.light b{border-color:rgba(18,123,255,.12);color:#1476d5;background:#fff}.digital-topbar.light i{background:#147bff;box-shadow:0 0 10px rgba(20,123,255,.45)}
+.partner-orbit{position:relative;height:188px;margin:10px 13px 0;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(22,138,188,.09),transparent 49%),#f8fbfc;border:1px solid rgba(7,16,26,.055)}
+.partner-orbit:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(7,16,26,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(7,16,26,.025) 1px,transparent 1px);background-size:42px 42px}
+.orbit-ring{position:absolute;left:50%;top:50%;border-radius:50%;border:1px solid rgba(15,125,184,.14);transform:translate(-50%,-50%)}.or1{width:280px;height:116px}.or2{width:178px;height:164px;transform:translate(-50%,-50%) rotate(34deg);border-style:dashed}
+.partner-core{position:absolute;left:50%;top:50%;width:98px;height:98px;transform:translate(-50%,-50%);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#0a2131,#0d3c55);box-shadow:0 16px 36px rgba(18,88,123,.18)}
+.partner-core span{color:#43d2d3;font-size:7px;font-weight:900;letter-spacing:.16em}.partner-core b{margin-top:5px;color:#eef8fb;font-size:8px;letter-spacing:.09em}
+.partner-node{position:absolute;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;background:#fff;border:1px solid rgba(7,16,26,.065);box-shadow:0 7px 19px rgba(31,75,102,.08);color:#617581;font-size:7px;font-weight:800}
+.partner-node i{width:6px;height:6px;border-radius:50%;background:#19c7cc}.pn1{left:7%;top:19%}.pn2{right:6%;top:20%}.pn3{left:5%;bottom:18%}.pn4{right:7%;bottom:17%}.pn5{left:50%;top:7%;transform:translateX(-50%)}
+.opportunity-feed{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 13px 13px}.opportunity-feed>div{position:relative;min-height:50px;padding:9px 10px;border-radius:11px;background:#fff;border:1px solid rgba(7,16,26,.055)}.opportunity-feed span{display:block;color:#1a79cf;font-size:5.7px;font-weight:900;letter-spacing:.12em}.opportunity-feed b{display:block;margin-top:5px;color:#34434e;font-size:7px}.opportunity-feed em{position:absolute;right:8px;top:8px;color:#0b9998;font-size:5.5px;font-style:normal;font-weight:900}
+
+/* Connecting NOAH bridge */
+.audience-bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;z-index:5}
+.bridge-line{width:1px;height:132px;background:linear-gradient(180deg,transparent,rgba(18,123,255,.30),rgba(24,210,207,.34),transparent)}
+.bridge-core{width:94px;height:94px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#07131f,#0d2d41);border:1px solid rgba(36,194,205,.20);box-shadow:0 18px 40px rgba(17,71,99,.17),0 0 0 10px rgba(18,123,255,.025)}
+.bridge-core span{color:#42d2d5;font-size:7px;font-weight:900;letter-spacing:.18em}.bridge-core b{margin-top:4px;color:#f1f8fb;font-size:9px;letter-spacing:.08em}.bridge-core small{max-width:72px;margin-top:5px;color:#678294;font-size:5.7px;line-height:1.2}
+.audience-footer-line{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:28px;color:#71808b;font-size:10px;font-weight:760;letter-spacing:.03em}.audience-footer-line b{color:#1b70c8}.audience-footer-line i{width:34px;height:1px;background:linear-gradient(90deg,#147cff,#1cc9cc)}
+
+@media(max-width:1200px){
+  .audience-experience{grid-template-columns:1fr 72px 1fr}
+  .audience-world{min-height:760px}.world-copy{padding-left:38px;padding-right:38px}
+  .brand-digital,.partner-digital{left:32px;right:32px}
+}
+@media(max-width:980px){
+  .audience-head{grid-template-columns:1fr;gap:22px}.audience-head .section-copy{margin-left:0}
+  .audience-experience{grid-template-columns:1fr;gap:18px}.audience-world{min-height:760px}.audience-bridge{display:none}
+  .audience-footer-line{margin-top:22px}
+}
+@media(max-width:720px){
+  .audiences-inner{padding:82px 0 76px}.audience-head{margin-bottom:40px}
+  .audience-world{min-height:700px;border-radius:20px}.world-copy{padding:34px 26px 0}.audience-world h3{font-size:37px}.audience-world p{font-size:14px}
+  .audience-points{gap:6px}.audience-points span{font-size:8px;padding:7px 9px}.audience-link{margin-top:22px}
+  .brand-digital,.partner-digital{left:18px;right:18px;bottom:18px;height:300px;border-radius:16px}
+  .brand-kpis{gap:5px;padding-left:9px;padding-right:9px}.brand-kpis>div{padding:9px}.brand-chart{margin-left:9px;margin-right:9px}
+  .partner-orbit{margin-left:9px;margin-right:9px}.opportunity-feed{padding-left:9px;padding-right:9px}
+  .audience-footer-line{display:none}
+}
