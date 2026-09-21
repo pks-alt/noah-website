@@ -1,0 +1,61 @@
+name: Confirm symbol-only preview
+on:
+  push:
+    branches: [preview-original-2176d74]
+    paths: [.github/workflows/verify-symbol-only-preview.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 65890fe335dd9028d332f1e146622039d0787125
+          persist-credentials: false
+      - name: Confirm page loading and the original transform-based menu behavior
+        run: |
+          python -m pip install --quiet playwright
+          mkdir -p /tmp/noah-symbol-confirmed
+          python - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          base='https://woven-photon-5426yhx.shipstatic.com'
+          root=Path('/tmp/noah-symbol-confirmed');rows=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
+              page=browser.new_page();errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              for width in [1440,1024,390,320]:
+                  page.set_viewport_size({'width':width,'height':1000 if width>760 else 844})
+                  for name in sorted(p.name for p in Path('.').glob('*.html')):
+                      errors.clear();response=page.goto(base+'/'+name,wait_until='networkidle',timeout=45000)
+                      page.evaluate('''async()=>{for(const i of document.images)i.loading='eager';await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));scrollTo({top:0,behavior:'instant'});}''')
+                      r=page.evaluate('''()=>({h1:document.querySelectorAll('h1').length,remaining:document.body.innerText.includes(String.fromCodePoint(0x2197)),imagesLoaded:[...document.images].every(i=>i.complete&&i.naturalWidth>0),svg:document.querySelectorAll('svg').length,overflow:document.documentElement.scrollWidth>innerWidth})''')
+                      if page.locator('.menu-button').is_visible():
+                          page.locator('.menu-button').click()
+                          page.wait_for_function('''()=>document.querySelector('.menu-button').getAttribute('aria-expanded')==='true'&&document.body.classList.contains('menu-open')&&Math.abs(new DOMMatrixReadOnly(getComputedStyle(document.querySelector('#mobile-nav')).transform).m42)<1''')
+                          r['menu_open']=True
+                          page.keyboard.press('Escape')
+                          page.wait_for_function('''()=>document.querySelector('.menu-button').getAttribute('aria-expanded')==='false'&&!document.body.classList.contains('menu-open')&&document.querySelector('#mobile-nav').getBoundingClientRect().bottom<=document.querySelector('.site-header').getBoundingClientRect().bottom''')
+                          r['menu_closed']=True
+                      r.update({'page':name,'width':width,'status':response.status,'script_errors':errors.copy()})
+                      rows.append(r)
+                      if name=='index.html' and width in [1440,390]:
+                          page.evaluate("scrollTo({top:0,behavior:'instant'})")
+                          page.screenshot(path=str(root/f'home-{width}.png'))
+              browser.close()
+          (root/'browser-check.json').write_text(json.dumps(rows,indent=2))
+          bad=[r for r in rows if r['status']!=200 or r['h1']!=1 or r['remaining'] or not r['imagesLoaded'] or r['script_errors'] or r['overflow'] or r.get('menu_open')==False or r.get('menu_closed')==False]
+          print('Symbol-only preview checks:',len(rows),'Failures:',len(bad))
+          print('Menu check uses aria-expanded, body state and offscreen transform, not Playwright is_visible, which remains true for offscreen elements.')
+          assert not bad,json.dumps(bad)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: noah-symbol-only-confirmed
+          path: /tmp/noah-symbol-confirmed/
+          retention-days: 7
