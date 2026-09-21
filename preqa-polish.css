@@ -1,4 +1,4 @@
-/* NOAH pre-QA visual rhythm pass  -  intentionally loaded after page styles. */
+/* NOAH pre-QA visual rhythm pass — intentionally loaded after page styles. */
 @media(min-width:961px){
   /* Homepage: preserve the premium scale but remove repeated oversized vertical gaps. */
   .home-page .solutions-inner,

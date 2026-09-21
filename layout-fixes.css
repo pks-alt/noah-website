@@ -1,4 +1,4 @@
-/* NOAH layout stability pass  -  loaded last. Prevents text/card collisions and keeps every section responsive. */
+/* NOAH layout stability pass — loaded last. Prevents text/card collisions and keeps every section responsive. */
 html,body{max-width:100%;overflow-x:hidden}
 img,svg{max-width:100%}
 .section-wrap,.hero-inner,.header-inner,.solutions-head,.solutions-experience,.growth-v2-head,.growth-v2-layout,.audience-head,.audience-experience,.network-head,.network-layout,.intelligence-head,.command-body,.why-layout,.footer-grid{min-width:0}

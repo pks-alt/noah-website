@@ -1,4 +1,4 @@
-/* Global foundation  -  required by every page, including legal pages. */
+/* Global foundation — required by every page, including legal pages. */
 *,*::before,*::after{box-sizing:border-box}
 html{margin:0;padding:0;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{

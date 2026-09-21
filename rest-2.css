@@ -1,4 +1,4 @@
-/* Brands + Partners  -  premium two-sided ecosystem */
+/* Brands + Partners — premium two-sided ecosystem */
 .audiences{position:relative;overflow:hidden;background:linear-gradient(180deg,#f4f7f9 0%,#eef3f6 100%);border-top:1px solid rgba(7,16,26,.08);border-bottom:1px solid rgba(7,16,26,.08)}
 .audiences:before{content:"";position:absolute;width:680px;height:680px;left:-330px;top:180px;border-radius:50%;background:radial-gradient(circle,rgba(18,123,255,.085),transparent 68%);pointer-events:none}
 .audiences:after{content:"";position:absolute;width:620px;height:620px;right:-300px;bottom:-120px;border-radius:50%;background:radial-gradient(circle,rgba(24,210,207,.10),transparent 68%);pointer-events:none}
