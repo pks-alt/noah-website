@@ -1,0 +1,129 @@
+/* NOAH pre-QA visual rhythm pass — intentionally loaded after page styles. */
+@media(min-width:961px){
+  /* Homepage: preserve the premium scale but remove repeated oversized vertical gaps. */
+  .home-page .solutions-inner,
+  .home-page .growth-v2-inner,
+  .home-page .audiences-inner,
+  .home-page .network-inner,
+  .home-page .intelligence-inner,
+  .home-page .why-inner{
+    padding-top:94px!important;
+    padding-bottom:90px!important;
+  }
+  .home-page .audience-head{margin-bottom:46px!important}
+  .home-page .audience-world{min-height:590px!important}
+  .home-page .brand-digital,
+  .home-page .partner-digital{
+    height:auto!important;
+    min-height:286px!important;
+    margin:26px 30px 20px!important;
+    margin-top:auto!important;
+  }
+  .home-page .final-inner{padding:92px 0 88px!important}
+
+  /* Internal heroes: slightly shorter so the page gets to its first substantive section sooner. */
+  .solutions-page .hero-inner,
+  .network-page .hero-inner,
+  .why-page .hero-inner{
+    min-height:680px!important;
+    padding-top:76px!important;
+    padding-bottom:82px!important;
+  }
+  .intelligence-page .hero-inner{
+    padding-top:78px!important;
+    padding-bottom:84px!important;
+  }
+  .contact-page .hero-inner{
+    min-height:650px!important;
+    padding-top:76px!important;
+    padding-bottom:82px!important;
+  }
+
+  /* Solutions: capability sections stay generous, but stop feeling like separate landing pages. */
+  .solutions-page .system-overview>.section-wrap{padding:82px 0 74px!important}
+  .solutions-page .solution-grid{padding:86px 0!important;gap:clamp(52px,6vw,88px)!important}
+  .solutions-page .connection-section>.section-wrap{padding:80px 0 76px!important}
+  .solutions-page .outcomes-section>.section-wrap{padding:80px 0 82px!important}
+  .solutions-page .final-inner{padding:82px 0 78px!important}
+
+  /* Network: keep the editorial rhythm while reducing stacked empty space. */
+  .network-page .why-network>.section-wrap{padding:82px 0 74px!important}
+  .network-page .partner-grid{padding:86px 0!important;gap:clamp(52px,6vw,88px)!important}
+  .network-page .commerce-section>.section-wrap{padding:84px 0 80px!important}
+  .network-page .two-sided-section>.section-wrap{padding:82px 0 78px!important}
+  .network-page .trust-grid{padding:82px 0!important;gap:72px!important}
+  .network-page .connection-section>.section-wrap{padding:78px 0 74px!important}
+  .network-page .final-inner{padding:76px 0 72px!important}
+
+  /* Intelligence: dense information benefits from slightly tighter transitions. */
+  .intelligence-page .problem-section>.section-wrap{padding:80px 0 76px!important}
+  .intelligence-page .signals-section>.section-wrap{padding:84px 0 82px!important}
+  .intelligence-page .decision-grid{padding:86px 0!important;gap:clamp(52px,6vw,88px)!important}
+  .intelligence-page .loop-section>.section-wrap{padding:82px 0 78px!important}
+  .intelligence-page .use-section>.section-wrap{padding:80px 0 76px!important}
+  .intelligence-page .positioning-grid{padding:80px 0 76px!important;gap:72px!important}
+
+  /* Why NOAH is now shorter; give it a confident, compact editorial cadence. */
+  .why-page .fragmented-section>.section-wrap,
+  .why-page .difference-section>.section-wrap,
+  .why-page .owned-section>.section-wrap{padding:84px 0!important}
+  .why-page .model-grid{padding:88px 0!important;gap:72px!important}
+  .why-page .owned-grid{gap:72px!important}
+  .why-page .final-inner{padding:86px 0!important}
+
+  /* Contact: move users into the actual forms faster. */
+  .contact-page .inquiry-grid{padding:88px 0!important;gap:clamp(54px,6vw,88px)!important}
+  .contact-page .what-next-section>.section-wrap{padding:82px 0!important}
+  .contact-page .direct-grid{padding:80px 0!important;gap:64px!important}
+}
+
+@media(min-width:721px) and (max-width:960px){
+  .home-page .audiences-inner,
+  .home-page .network-inner,
+  .home-page .intelligence-inner,
+  .home-page .why-inner{padding-top:76px!important;padding-bottom:72px!important}
+}
+
+
+/* Responsive pre-QA stability: remove fixed-height presentation where content stacks. */
+@media(max-width:960px){
+  .network-page .side-card{min-height:auto!important}
+  .why-page .distribution-diagram{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:14px!important;
+    min-height:0!important;
+    padding:22px!important;
+  }
+  .why-page .distribution-diagram .dist-core{
+    position:relative!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    align-self:center!important;
+    width:118px!important;
+    height:118px!important;
+    flex:0 0 auto!important;
+  }
+  .why-page .distribution-diagram .dist-card{
+    position:relative!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    width:100%!important;
+  }
+}
+
+@media(max-width:720px){
+  .network-page .side-card{padding:30px 24px!important}
+  .why-page .distribution-diagram{padding:18px!important}
+}
+
+
+/* Contact visual transition: separate the dark hero from the first inquiry section. */
+.contact-page .brand-section{
+  background:linear-gradient(145deg,#07131f 0%,#091b29 52%,#0a2231 100%)!important;
+  border-top:1px solid rgba(126,184,222,.10);
+}
