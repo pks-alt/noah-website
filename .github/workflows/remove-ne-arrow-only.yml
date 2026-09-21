@@ -1,0 +1,154 @@
+name: Remove only the requested small symbol
+on:
+  push:
+    branches: [preview-original-2176d74]
+    paths: [.github/workflows/remove-ne-arrow-only.yml]
+permissions:
+  contents: write
+concurrency:
+  group: noah-symbol-only-2176d74
+  cancel-in-progress: false
+jobs:
+  symbol_only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 2176d74bb974d6d9b347152137f1c44e545ba909
+          persist-credentials: false
+      - name: Remove only U+2197 and prove every other byte is unchanged
+        run: |
+          mkdir -p /tmp/noah-symbol-evidence /tmp/noah-symbol-preview
+          python - <<'PY'
+          import subprocess,json,hashlib
+          from pathlib import Path
+          base='2176d74bb974d6d9b347152137f1c44e545ba909'
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==base
+          target=chr(0x2197).encode('utf-8')
+          names=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          changes=[];manifest=[]
+          for name in filter(None,names):
+              p=Path(name);original=p.read_bytes()
+              candidate=original.replace(target,b'') if p.suffix in ['.html','.css','.js'] else original
+              if candidate!=original:
+                  changes.append({'file':name,'removed':original.count(target)})
+                  p.write_bytes(candidate)
+              actual=p.read_bytes()
+              assert actual==candidate, 'Unexpected modification: '+name
+              manifest.append({'file':name,'original_sha256':hashlib.sha256(original).hexdigest(),'new_sha256':hashlib.sha256(actual).hexdigest(),'only_requested_symbol_removed':actual==candidate})
+          assert len(changes)==10,changes
+          assert sum(c['removed'] for c in changes)==77,changes
+          assert all(Path(c['file']).suffix=='.html' for c in changes),changes
+          report={'base_commit':base,'removed_character':'U+2197','removed_count':77,'changed_files':changes,'all_other_bytes_preserved':True,'files':manifest}
+          Path('/tmp/noah-symbol-evidence/source-check.json').write_text(json.dumps(report,indent=2))
+          Path('/tmp/noah-symbol-evidence/changed-files.json').write_text(json.dumps([c['file'] for c in changes]))
+          subprocess.run(['git','diff','--check'],check=True)
+          print('Verified: 77 U+2197 deletions across 10 HTML pages. All other bytes, images, CSS, scripts and wording unchanged.')
+          PY
+      - name: Commit only the ten character-only page edits to the handoff branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          remote=$(git -c credential.helper='!gh auth git-credential' ls-remote origin refs/heads/developer-handoff-final | cut -f1)
+          test "$remote" = '2176d74bb974d6d9b347152137f1c44e545ba909' || { echo 'Handoff branch moved; stop without overwriting.'; exit 1; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          names=json.loads(Path('/tmp/noah-symbol-evidence/changed-files.json').read_text())
+          subprocess.run(['git','add','--',*names],check=True)
+          PY
+          git commit -m 'Remove only the small northeast-arrow character; keep the finalized design unchanged'
+          git -c credential.helper='!gh auth git-credential' push origin HEAD:developer-handoff-final
+          git rev-parse HEAD > /tmp/noah-symbol-evidence/source-commit.txt
+          git archive --format=zip --output=/tmp/noah-symbol-evidence/noah-symbol-only-source.zip HEAD
+      - name: Prepare complete same-origin preview without editing source
+        run: |
+          python - <<'PY'
+          import shutil,json
+          from pathlib import Path
+          dest=Path('/tmp/noah-symbol-preview')
+          files=[p for p in Path('.').iterdir() if p.is_file() and p.suffix in ['.html','.css','.js','.txt','.xml']]
+          files += [p for p in Path('assets').rglob('*') if p.is_file()]
+          for p in files:
+              q=dest/p;q.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,q)
+          (dest/'ship.json').write_text(json.dumps({'headers':[{'source':'/(.*)','headers':[{'key':'X-Robots-Tag','value':'noindex, nofollow'}]}]}))
+          print('Preview files:',len(files))
+          PY
+      - name: Publish the original design with only the symbol removed
+        run: |
+          npx -y @shipstatic/ship /tmp/noah-symbol-preview --json --no-spa-detect --no-path-detect --label noah-symbol-only > /tmp/noah-symbol-deployment-private.json
+          cat > /tmp/noah-symbol-public.pem <<'PEM'
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmtu3u+ph1wuYwh6aQI8m
+          /SuVgrYwh4cWDLk+IfLYlB9FDv9brVcXbMSq9scQnyKINL1LE5bBvI9iNck/0g5v
+          gJsNG1iu0mUbyGTAw85WZZwsIk/xtvusQ4OxDze7D1Kxu7UJPl+tMumjUu3paQkM
+          VlwBMyKzgfEwZVwyEHeSomjlQwRZLZ67YV5rSfvENMMjHt0bC9R5A9EdRHrWHOQa
+          n1N3anieiXW3Jrogj35UKB0UJFZklkuozwtWtMjJQCTBHsBlOoXhqjpDAQJm+O3P
+          m62zkcTc72mVlBWzOwbP/EHtzMqT4zRB3C8FzziEhgZsdpcbk2zYZDRHaaLVJb0A
+          rQIDAQAB
+          -----END PUBLIC KEY-----
+          PEM
+          python - <<'PY'
+          import json,subprocess
+          from pathlib import Path
+          d=json.loads(Path('/tmp/noah-symbol-deployment-private.json').read_text())
+          if isinstance(d.get('data'),dict):d=d['data']
+          claim=d.pop('claim',None)
+          if claim:
+              subprocess.run(['openssl','pkeyutl','-encrypt','-pubin','-inkey','/tmp/noah-symbol-public.pem','-pkeyopt','rsa_padding_mode:oaep','-pkeyopt','rsa_oaep_md:sha256','-out','/tmp/noah-symbol-evidence/claim.enc'],input=claim.encode(),check=True)
+          assert d.get('url')
+          Path('/tmp/noah-symbol-evidence/deployment.json').write_text(json.dumps(d,indent=2))
+          print('Symbol-only preview:',d['url'])
+          PY
+      - name: Open the unchanged design in agent-browser
+        run: |
+          URL=$(python -c "import json;print(json.load(open('/tmp/noah-symbol-evidence/deployment.json'))['url'])")
+          npx -y agent-browser --executable-path /usr/bin/google-chrome open "$URL"
+          npx -y agent-browser wait --load networkidle
+          npx -y agent-browser screenshot /tmp/noah-symbol-evidence/home-browser.png
+          npx -y agent-browser snapshot -i > /tmp/noah-symbol-evidence/home-interactive.txt
+          npx -y agent-browser close
+      - name: Verify all ten pages on desktop and mobile
+        run: |
+          python -m pip install --quiet playwright
+          python - <<'PY'
+          import json,shutil,re
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          root=Path('/tmp/noah-symbol-evidence')
+          base=json.loads((root/'deployment.json').read_text())['url'].rstrip('/')
+          names=sorted(p.name for p in Path('.').glob('*.html'));rows=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
+              page=browser.new_page();errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              for width in [1440,1024,390,320]:
+                  page.set_viewport_size({'width':width,'height':1000 if width>760 else 844})
+                  for name in names:
+                      errors.clear();response=page.goto(base+'/'+name,wait_until='networkidle',timeout=45000)
+                      await_images='''async()=>{for(const i of document.images){i.loading='eager';}await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));for(let y=0;y<document.body.scrollHeight;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,15));}scrollTo(0,0);}'''
+                      page.evaluate(await_images);page.wait_for_load_state('networkidle')
+                      data=page.evaluate('''()=>({h1:document.querySelectorAll('h1').length,remaining:document.body.innerText.includes(String.fromCodePoint(0x2197)),images:[...document.images].map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})),svg:document.querySelectorAll('svg').length,overflow:document.documentElement.scrollWidth>innerWidth})''')
+                      data.update({'page':name,'width':width,'status':response.status,'script_errors':errors.copy()})
+                      if page.locator('.menu-button').is_visible():
+                          page.locator('.menu-button').click();data['menu_open']=page.locator('#mobile-nav').is_visible();page.keyboard.press('Escape');data['menu_closed']=not page.locator('#mobile-nav').is_visible()
+                      rows.append(data)
+                      if name=='index.html' and width in [1440,390]:
+                          page.screenshot(path=str(root/f'home-{width}.png'))
+                          page.locator('#audiences').screenshot(path=str(root/f'brands-partners-{width}.png'))
+              browser.close()
+          (root/'browser-check.json').write_text(json.dumps(rows,indent=2))
+          bad=[r for r in rows if r['status']!=200 or r['h1']!=1 or r['remaining'] or r['script_errors'] or any(not i['loaded'] for i in r['images']) or r.get('menu_open')==False or r.get('menu_closed')==False]
+          print('Page/viewport checks:',len(rows),'Failures:',len(bad),'Overflow observations:',sum(r['overflow'] for r in rows))
+          assert not bad,json.dumps(bad)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: noah-symbol-only-evidence
+          path: /tmp/noah-symbol-evidence/
+          retention-days: 7
