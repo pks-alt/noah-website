@@ -1,0 +1,95 @@
+name: Verify original design preview
+on:
+  push:
+    branches: [preview-original-2176d74]
+    paths: [.github/workflows/verify-original-preview.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 2176d74bb974d6d9b347152137f1c44e545ba909
+          persist-credentials: false
+      - name: Check host URL normalization and original content
+        run: |
+          mkdir -p /tmp/noah-original-browser-evidence
+          python - <<'PY'
+          from pathlib import Path
+          import urllib.request,difflib,json,re
+          base='https://clear-wisp-fnn3v38.shipstatic.com/'
+          root=Path('/tmp/noah-original-browser-evidence')
+          (root/'deployment.json').write_text(json.dumps({'url':base,'source_commit':'2176d74bb974d6d9b347152137f1c44e545ba909'}))
+          for name in ['network-page.css','intelligence-page.css','index.html','contact.html']:
+              with urllib.request.urlopen(base+name,timeout=30) as r:actual=r.read().decode()
+              original=Path(name).read_text()
+              (root/('served-'+name)).write_text(actual)
+              diffs=list(difflib.unified_diff(original.splitlines(),actual.splitlines(),n=0))
+              print('HOST DIFFERENCE',name)
+              if len(original)<1000: print('ORIGINAL',repr(original),'HOSTED',repr(actual))
+              else:
+                  matcher=difflib.SequenceMatcher(None,original,actual,autojunk=False)
+                  changes=[]
+                  for op,i,j,k,l in matcher.get_opcodes():
+                      if op!='equal':changes.append({'op':op,'original':original[i:j][:250],'hosted':actual[k:l][:250]})
+                  print(json.dumps(changes[:12]))
+          PY
+      - name: Open restored homepage in agent-browser
+        run: |
+          npx -y agent-browser --executable-path /usr/bin/google-chrome open 'https://clear-wisp-fnn3v38.shipstatic.com/'
+          npx -y agent-browser wait --load networkidle
+          npx -y agent-browser screenshot /tmp/noah-original-browser-evidence/original-home-browser.png
+          npx -y agent-browser snapshot -i > /tmp/noah-original-browser-evidence/home-interactive.txt
+          npx -y agent-browser close
+      - name: Verify every public page on desktop and mobile
+        if: always()
+        run: |
+          python -m pip install --quiet playwright beautifulsoup4
+          python - <<'PY'
+          import json,shutil,re
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          from bs4 import BeautifulSoup
+          root=Path('/tmp/noah-original-browser-evidence');root.mkdir(exist_ok=True)
+          base='https://clear-wisp-fnn3v38.shipstatic.com'
+          names=sorted(p.name for p in Path('.').glob('*.html'))
+          rows=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
+              page=browser.new_page();errors=[];failed=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              page.on('requestfailed',lambda r:failed.append({'url':r.url,'error':r.failure}))
+              for width in [1440,390]:
+                  page.set_viewport_size({'width':width,'height':1000 if width==1440 else 844})
+                  for name in names:
+                      errors.clear();failed.clear();response=page.goto(base+'/'+name,wait_until='networkidle',timeout=45000)
+                      body=BeautifulSoup(response.text(),'html.parser').body
+                      original=BeautifulSoup(Path(name).read_text(),'html.parser').body
+                      for s in [body,original]:
+                          for tag in s.select('script,style'):tag.decompose()
+                      same_text=body.get_text(' ',strip=True)==original.get_text(' ',strip=True)
+                      page.evaluate('''async()=>{for(let y=0;y<document.body.scrollHeight;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,30));}scrollTo(0,0);}''')
+                      page.wait_for_load_state('networkidle')
+                      row=page.evaluate('''()=>({title:document.title,h1:document.querySelector('h1')?.innerText,bodyLength:document.body.innerText.length,images:[...document.images].map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})),svg:document.querySelectorAll('svg').length,overflow:document.documentElement.scrollWidth>innerWidth,heroGraphic:!!document.querySelector('.stage,.hero-system,.hero-console')})''')
+                      row.update({'page':name,'width':width,'status':response.status,'original_body_text_preserved':same_text,'script_errors':errors.copy(),'failed_requests':failed.copy()})
+                      rows.append(row)
+                      if name=='index.html':
+                          page.screenshot(path=str(root/f'home-{width}.png'))
+                          page.locator('#audiences').screenshot(path=str(root/f'brands-partners-{width}.png'))
+                      if name in ['solutions.html','network.html','privacy.html']:page.screenshot(path=str(root/f'{name[:-5]}-{width}.png'))
+              browser.close()
+          (root/'browser-check.json').write_text(json.dumps(rows,indent=2))
+          bad=[r for r in rows if r['status']!=200 or r['bodyLength']<100 or any(not i['loaded'] for i in r['images']) or r['failed_requests'] or not r['original_body_text_preserved']]
+          print('Desktop/mobile page loads:',len(rows),'Failures:',len(bad))
+          print('Script errors:',sum(bool(r['script_errors']) for r in rows),'Overflow observations:',sum(r['overflow'] for r in rows))
+          assert not bad,json.dumps(bad)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: noah-original-browser-evidence
+          path: /tmp/noah-original-browser-evidence/
+          retention-days: 7
