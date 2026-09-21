@@ -1,0 +1,134 @@
+name: Preview restored original design
+on:
+  push:
+    branches: [preview-original-2176d74]
+    paths: [.github/workflows/preview-original.yml]
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 2176d74bb974d6d9b347152137f1c44e545ba909
+          persist-credentials: false
+      - name: Export exact restored website without editing any source
+        run: |
+          set -eu
+          test "$(git rev-parse HEAD)" = '2176d74bb974d6d9b347152137f1c44e545ba909'
+          test "$(git rev-parse HEAD^{tree})" = 'c29ae698d0bafaa6970cff21c073122516d2f81b'
+          mkdir -p /tmp/noah-original-preview /tmp/noah-original-evidence
+          python - <<'PY'
+          from pathlib import Path
+          import shutil,json,hashlib
+          dest=Path('/tmp/noah-original-preview')
+          manifest={}
+          files=[p for p in Path('.').iterdir() if p.is_file() and p.suffix in ['.html','.css','.js','.txt','.xml']]
+          files += [p for p in Path('assets').rglob('*') if p.is_file()]
+          for p in files:
+              q=dest/p; q.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(p,q)
+              manifest[p.as_posix()]=hashlib.sha256(q.read_bytes()).hexdigest()
+          assert len(list(dest.glob('*.html')))==10
+          # Preview host setting only. The approved HTML, styles, scripts and images stay byte-identical.
+          (dest/'ship.json').write_text(json.dumps({'headers':[{'source':'/(.*)','headers':[{'key':'X-Robots-Tag','value':'noindex, nofollow'}]}]}))
+          Path('/tmp/noah-original-evidence/source-manifest.json').write_text(json.dumps({'commit':'2176d74bb974d6d9b347152137f1c44e545ba909','tree':'c29ae698d0bafaa6970cff21c073122516d2f81b','files':manifest},indent=2))
+          print('Exported exact original website files:',len(manifest))
+          PY
+      - name: Publish complete same-origin review
+        run: |
+          npx -y @shipstatic/ship /tmp/noah-original-preview --json --no-spa-detect --no-path-detect --label noah-original-restored > /tmp/noah-original-deployment-private.json
+          cat > /tmp/noah-claim-public.pem <<'PEM'
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyHk+Wu5BECjP4gWDVZsi
+          Ma7BXZiOTYvJlOSgD5aP4styZSfpmmXu2jAVMxZ1+noAlhtOX0OZEPZXuWjbVnT0
+          y+pHavQYHbV1DiNP3SaAoxqA945WpEvfDmkScakJZlmTB0/6qG/yaOuLdJswI/kU
+          /cvdVS0sj0TT2/S9ZAGHoKS6o5YFjdJjOSVsNl2gDl7ssq/legMOSoMZpg7Qw1NU
+          CTeznB6kSwhxOMvloHNIn1mzwB5aoqxX9Q6rz8A7wBaZSDFOhcq3hYe28IumKyrv
+          ytykI+WV5VGFBldcatfoe7lOPdY54uCkK8emGw/2Gx3RSm9OncKPi+G4jkvXJd2L
+          6wIDAQAB
+          -----END PUBLIC KEY-----
+          PEM
+          python - <<'PY'
+          from pathlib import Path
+          import json,subprocess
+          d=json.loads(Path('/tmp/noah-original-deployment-private.json').read_text())
+          if isinstance(d.get('data'),dict):d=d['data']
+          claim=d.pop('claim',None)
+          if claim:
+              subprocess.run(['openssl','pkeyutl','-encrypt','-pubin','-inkey','/tmp/noah-claim-public.pem','-pkeyopt','rsa_padding_mode:oaep','-pkeyopt','rsa_oaep_md:sha256','-out','/tmp/noah-original-evidence/claim.enc'],input=claim.encode(),check=True)
+          assert d.get('url'), 'No preview URL returned'
+          Path('/tmp/noah-original-evidence/deployment.json').write_text(json.dumps(d,indent=2))
+          print('Original restored preview:',d['url'])
+          PY
+      - name: Check every deployed source file matches the original
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,urllib.request,hashlib,concurrent.futures
+          root=Path('/tmp/noah-original-evidence')
+          d=json.loads((root/'deployment.json').read_text());base=d['url'].rstrip('/')+'/'
+          expected=json.loads((root/'source-manifest.json').read_text())['files']
+          def check(item):
+              name,digest=item
+              try:
+                  with urllib.request.urlopen(base+name,timeout=30) as r:
+                      status=r.status;data=r.read();content_type=r.headers.get('Content-Type');robots=r.headers.get('X-Robots-Tag')
+                  return {'file':name,'status':status,'matches_original':hashlib.sha256(data).hexdigest()==digest,'content_type':content_type,'robots':robots}
+              except Exception as e:return {'file':name,'error':str(e),'matches_original':False}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:rows=list(pool.map(check,expected.items()))
+          (root/'http-check.json').write_text(json.dumps(rows,indent=2))
+          print('Original files checked:',len(rows),'Failures:',sum(not x['matches_original'] for x in rows))
+          assert all(x['matches_original'] for x in rows), json.dumps([x for x in rows if not x['matches_original']])
+          PY
+      - name: Open original design with agent-browser
+        run: |
+          URL=$(python -c "import json;print(json.load(open('/tmp/noah-original-evidence/deployment.json'))['url'])")
+          npx -y agent-browser --executable-path /usr/bin/google-chrome open "$URL"
+          npx -y agent-browser wait --load networkidle
+          npx -y agent-browser screenshot /tmp/noah-original-evidence/original-home-browser.png
+          npx -y agent-browser snapshot -i > /tmp/noah-original-evidence/home-interactive.txt
+          npx -y agent-browser close
+      - name: Verify all public pages in desktop and mobile Chromium
+        run: |
+          python -m pip install --quiet playwright
+          python - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          root=Path('/tmp/noah-original-evidence')
+          base=json.loads((root/'deployment.json').read_text())['url'].rstrip('/')
+          names=sorted(p.name for p in Path('/tmp/noah-original-preview').glob('*.html'))
+          rows=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
+              page=browser.new_page();errors=[];failed=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              page.on('requestfailed',lambda r:failed.append({'url':r.url,'error':r.failure}))
+              for width in [1440,390]:
+                  page.set_viewport_size({'width':width,'height':1000 if width==1440 else 844})
+                  for name in names:
+                      errors.clear();failed.clear();response=page.goto(base+'/'+name,wait_until='networkidle',timeout=45000)
+                      page.evaluate('''async()=>{for(let y=0;y<document.body.scrollHeight;y+=700){scrollTo(0,y);await new Promise(r=>setTimeout(r,30));}scrollTo(0,0);}''')
+                      page.wait_for_load_state('networkidle')
+                      row=page.evaluate('''()=>({title:document.title,h1:document.querySelector('h1')?.innerText,bodyLength:document.body.innerText.length,images:[...document.images].map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})),svg:document.querySelectorAll('svg').length,overflow:document.documentElement.scrollWidth>innerWidth,heroGraphic:!!document.querySelector('.stage,.hero-system,.hero-console')})''')
+                      row.update({'page':name,'width':width,'status':response.status,'script_errors':errors.copy(),'failed_requests':failed.copy()})
+                      rows.append(row)
+                      if name=='index.html':
+                          page.screenshot(path=str(root/f'home-{width}.png'))
+                          page.locator('#audiences').screenshot(path=str(root/f'brands-partners-{width}.png'))
+                      if name=='privacy.html':page.screenshot(path=str(root/f'privacy-{width}.png'))
+              browser.close()
+          (root/'browser-check.json').write_text(json.dumps(rows,indent=2))
+          load_failures=[r for r in rows if r['status']!=200 or r['bodyLength']<100 or any(not i['loaded'] for i in r['images']) or r['failed_requests']]
+          print('Page and viewport loads checked:',len(rows),'Loading failures:',len(load_failures))
+          print('Existing script issues:',sum(bool(r['script_errors']) for r in rows),'Existing overflow observations:',sum(r['overflow'] for r in rows))
+          assert not load_failures,json.dumps(load_failures)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: noah-original-preview-evidence
+          path: /tmp/noah-original-evidence/
+          retention-days: 7
