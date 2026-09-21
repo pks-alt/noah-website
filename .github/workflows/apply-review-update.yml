@@ -76,7 +76,7 @@ jobs:
           cat > /tmp/claim-public.pem <<'PEM'
           -----BEGIN PUBLIC KEY-----
           MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl5ho5Xn/Sqwqj63280Rq
-          pVeuGyUezkBCbv0hZ6I/b2U1jI/b2U1jI9PvdtW2G6lNwALgjJKw3FYWuK41lId2Zg5CA2l
+          pVeuGyUezkBCbv0hZ6I/b2U1jI9PvdtW2G6lNwALgjJKw3FYWuK41lId2Zg5CA2l
           PzWf9rasy1hhqIuGvMltA4mn+B2Dz8mpRNqRKsvh8VunMx9OidWfncfQJ2PglwfS
           DBe6rfu3U/jFowfwSpYRQFHQrja6R2Eejt0Y7369dYOcEQA7x/oC4yzmeueoehgx
           gVCa57ORHV6l7/BXyb+gaqT2AeaIudYfYqJqI9IJIGMUIuQ0if/N+WR8mP0VuN1Z
