@@ -1,6 +1,6 @@
 @import url('solutions-page.css');
 
-/* NOAH Intelligence — page-specific visual system */
+/* NOAH Intelligence  -  page-specific visual system */
 .hero-inner{grid-template-columns:minmax(0,.86fr) minmax(590px,1.14fr);gap:clamp(50px,6vw,92px);min-height:auto;padding:90px 0 96px}
 .hero{background:radial-gradient(circle at 78% 18%,rgba(20,145,195,.19),transparent 28%),linear-gradient(125deg,#040b12 0%,#07121d 50%,#071825)}
 .hero-copy>p{max-width:700px}

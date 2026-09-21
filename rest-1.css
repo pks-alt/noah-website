@@ -6,7 +6,7 @@
 .section-copy{margin:0;color:#66717d;font-size:17px;line-height:1.65;letter-spacing:-.012em}
 .text-link{display:inline-flex;align-items:center;gap:9px;color:#0e6edb;font-size:13px;font-weight:800}.text-link span{transition:transform .2s ease}.text-link:hover span{transform:translateX(4px)}
 
-/* Solutions — premium connected system */
+/* Solutions  -  premium connected system */
 .solutions{position:relative;overflow:hidden;background:linear-gradient(180deg,#f7f9fb 0%,#ffffff 100%);border-bottom:1px solid var(--softline)}
 .solutions:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(18,123,255,.40),rgba(24,210,207,.48),transparent)}
 .solutions:after{content:"";position:absolute;width:620px;height:620px;right:-260px;top:20px;border-radius:50%;background:radial-gradient(circle,rgba(24,210,207,.075),transparent 67%);pointer-events:none}
