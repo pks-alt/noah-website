@@ -1,21 +1,25 @@
-name: Review source bundle
+name: NOAH source review
 on:
   workflow_dispatch:
   push:
     branches: [developer-handoff-final]
-    paths: [.github/workflows/review-source.yml]
+  pull_request:
+    branches: [main]
 permissions:
   contents: read
 jobs:
-  bundle:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Package the exact source revision
-        run: |
-          git archive --format=zip --output=noah-review-source.zip HEAD
+        with:
+          persist-credentials: false
+      - name: Check content, local assets, anchors, and metadata
+        run: python tools/check_content.py
+      - name: Package the reviewed source
+        run: git archive --format=zip --output=noah-review-source.zip HEAD
       - uses: actions/upload-artifact@v4
         with:
-          name: noah-review-source
+          name: noah-reviewed-source
           path: noah-review-source.zip
           retention-days: 7
