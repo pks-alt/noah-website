@@ -1,0 +1,78 @@
+name: Confirm original preview loading
+on:
+  push:
+    branches: [preview-original-2176d74]
+    paths: [.github/workflows/verify-original-loading.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 2176d74bb974d6d9b347152137f1c44e545ba909
+          persist-credentials: false
+      - name: Verify unchanged site content and asset responses
+        run: |
+          mkdir -p /tmp/original-confirmed
+          python - <<'PY'
+          from pathlib import Path
+          import urllib.request,re,json,concurrent.futures
+          root=Path('/tmp/original-confirmed');base='https://clear-wisp-fnn3v38.shipstatic.com/'
+          files=[p for p in Path('.').iterdir() if p.is_file() and p.suffix in ['.html','.css','.js','.txt','.xml']]
+          files += [p for p in Path('assets').rglob('*') if p.is_file()]
+          def check(p):
+              with urllib.request.urlopen(base+p.as_posix(),timeout=30) as r:data=r.read();status=r.status
+              # ShipStatic inserts a deployment cache query, without changing site content.
+              if p.suffix in ['.html','.css','.js','.txt','.xml']:data=re.sub(rb'\?_ship=[A-Za-z0-9]+',b'',data)
+              return {'file':p.as_posix(),'status':status,'original_preserved':data==p.read_bytes()}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:rows=list(pool.map(check,files))
+          (root/'http-content-check.json').write_text(json.dumps(rows,indent=2))
+          print('All original files checked:',len(rows),'Preserved:',sum(r['original_preserved'] for r in rows))
+          assert all(r['original_preserved'] for r in rows),json.dumps([r for r in rows if not r['original_preserved']])
+          PY
+      - name: Verify actual image decoding and complete page loading
+        if: always()
+        run: |
+          python -m pip install --quiet playwright
+          python - <<'PY'
+          from pathlib import Path
+          import json,shutil
+          from playwright.sync_api import sync_playwright
+          base='https://clear-wisp-fnn3v38.shipstatic.com'
+          root=Path('/tmp/original-confirmed');root.mkdir(exist_ok=True)
+          names=sorted(p.name for p in Path('.').glob('*.html'));rows=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch(executable_path=shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
+              page=browser.new_page();errors=[]
+              page.on('pageerror',lambda e:errors.append(str(e)))
+              for width in [1440,390]:
+                  page.set_viewport_size({'width':width,'height':1000 if width==1440 else 844})
+                  for name in names:
+                      errors.clear();res=page.goto(base+'/'+name,wait_until='networkidle',timeout=30000)
+                      # Force decoding in the test only. The deployed lazy-loading markup is unchanged.
+                      await_images=page.locator('img').evaluate_all('''async images=>await Promise.all(images.map(async i=>{i.loading='eager';try{await i.decode();return true;}catch(e){return false;}}))''')
+                      row=page.evaluate('''()=>({h1:document.querySelector('h1')?.innerText,images:[...document.images].map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})),svg:document.querySelectorAll('svg').length,overflow:document.documentElement.scrollWidth>innerWidth})''')
+                      row.update({'page':name,'width':width,'status':res.status,'errors':errors.copy(),'image_decoding':await_images})
+                      rows.append(row)
+                      if name=='index.html':
+                          page.evaluate('window.scrollTo({top:0,behavior:"instant"})');page.wait_for_timeout(200)
+                          page.screenshot(path=str(root/f'original-home-{width}.png'))
+                          page.locator('#audiences').scroll_into_view_if_needed();page.wait_for_timeout(200)
+                          page.locator('#audiences').screenshot(path=str(root/f'original-brands-{width}.png'))
+                      if name in ['network.html','solutions.html']:
+                          page.screenshot(path=str(root/f'{name[:-5]}-{width}.png'))
+              browser.close()
+          (root/'browser-check.json').write_text(json.dumps(rows,indent=2))
+          bad=[r for r in rows if r['status']!=200 or not r['h1'] or not all(r['image_decoding']) or r['errors']]
+          print('Desktop/mobile combinations:',len(rows),'Page or image loading issues:',len(bad))
+          assert not bad,json.dumps(bad)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: noah-original-confirmed
+          path: /tmp/original-confirmed/
+          retention-days: 7
